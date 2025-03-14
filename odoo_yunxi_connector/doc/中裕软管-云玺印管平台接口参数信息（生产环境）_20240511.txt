@@ -1,0 +1,10 @@
+中裕软管
+http://58.222.101.110:18585/yxkj/login  -----------默认印章管控平台运维人员使用
+http://58.222.101.110:18585/zyrg/login  -----------印章业务平台(客户) 业务人员使用
+平台统一管理员账号密码：admin/123456
+appKey(应用标识):ZYRGDocker
+tenant(租户标识):zyrg
+secret(秘钥):无
+统一接口调用地址:http://58.222.101.110:18585/stamper/apis/business/docking/execute
+
+

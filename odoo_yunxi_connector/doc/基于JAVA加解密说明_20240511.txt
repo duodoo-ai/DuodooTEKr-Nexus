@@ -1,0 +1,130 @@
+import javax.crypto.Cipher;
+import javax.crypto.KeyGenerator;
+import javax.crypto.SecretKey;
+import javax.crypto.spec.SecretKeySpec;
+import java.nio.charset.StandardCharsets;
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
+import java.util.Locale;
+
+public class AesUtils {
+  /**
+   * 加密解密算法/加密模式/填充方式
+   */
+  private static final String AES_ECB_PKCS5PADDING = "AES/ECB/PKCS5Padding";
+  private static final char[] DIGITS_LOWER = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'};
+
+  public static void main(String[] args) throws Exception {
+    String context = "测试文本内容";
+    String secret = "123456";
+    String ciphertext = encrypt(context, secret);
+    System.out.println("密文:" + ciphertext);
+    String text = decrypt(ciphertext, secret);
+    System.out.println("明文:" + text);
+  }
+
+  /**
+   * 加密
+   *
+   * @param context 明文
+   * @param secret  秘钥
+   * @return 密文
+   * @throws Exception
+   */
+  public static String encrypt(String context, String secret) throws Exception {
+    SecretKeySpec aesKey = getSecretKeySpec(secret);
+    Cipher cipher = Cipher.getInstance(AES_ECB_PKCS5PADDING);
+    cipher.init(Cipher.ENCRYPT_MODE, aesKey);
+    byte[] encrypted = cipher.doFinal(context.getBytes(StandardCharsets.UTF_8));
+    // 此处使用BASE64做转码功能，同时能起到2次加密的作用。
+    return encodeHexStr(encrypted).toUpperCase(Locale.ROOT);
+  }
+
+  /**
+   * 解密
+   *
+   * @param ciphertext 密文
+   * @param secret     秘钥
+   * @return 明文
+   * @throws Exception
+   */
+  public static String decrypt(String ciphertext, String secret) throws Exception {
+    SecretKeySpec aesKey = getSecretKeySpec(secret);
+    Cipher cipher = Cipher.getInstance(AES_ECB_PKCS5PADDING);
+    cipher.init(Cipher.DECRYPT_MODE, aesKey);
+    // 先用base64解密
+    byte[] encrypted1 = decodeHex(ciphertext.toCharArray());
+    byte[] original = cipher.doFinal(encrypted1);
+    return new String(original, StandardCharsets.UTF_8);
+  }
+
+  /**
+  * 生成秘钥对象
+  *
+  * @param secret 秘钥字符串
+  * @return 秘钥对象
+  */
+  public static SecretKeySpec getSecretKeySpec(String secret) {
+    byte[] finalKey = new byte[16];
+    int i = 0;
+    for (byte b : secret.getBytes(StandardCharsets.US_ASCII)) {
+      finalKey[i++ % 16] ^= b;
+    }
+    return new SecretKeySpec(finalKey, "AES");
+  }
+
+  /**
+   * 将字节数组转换为十六进制字符串
+   *
+   * @param data byte[]
+   * @return 十六进制String
+   */
+  private static String encodeHexStr(byte[] data) {
+    final int len = data.length;
+    final char[] out = new char[len << 1];//len*2
+    for (int i = 0, j = 0; i < len; i++) {
+      out[j++] = DIGITS_LOWER[(0xF0 & data[i]) >>> 4];// 高位
+      out[j++] = DIGITS_LOWER[0x0F & data[i]];// 低位
+    }
+    return new String(out);
+  }
+
+  /**
+   * 将十六进制字符数组转换为字节数组
+   *
+   * @param hexData 十六进制char[]
+   * @return byte[]
+   * @throws RuntimeException 如果源十六进制字符数组是一个奇怪的长度，将抛出运行时异常
+   */
+  public static byte[] decodeHex(char[] hexData) {
+    int len = hexData.length;
+    if ((len & 0x01) != 0) {
+      throw new RuntimeException("Odd number of characters.");
+    }
+    byte[] out = new byte[len >> 1];
+    for (int i = 0, j = 0; j < len; i++) {
+      int f = toDigit(hexData[j], j) << 4;
+      j++;
+      f = f | toDigit(hexData[j], j);
+      j++;
+      out[i] = (byte) (f & 0xFF);
+    }
+    return out;
+  }
+
+  /**
+   * 将十六进制字符转换成一个整数
+   *
+   * @param ch    十六进制char
+   * @param index 十六进制字符在字符数组中的位置
+   * @return 一个整数
+   * @throws RuntimeException 当ch不是一个合法的十六进制字符时，抛出运行时异常
+   */
+  private static int toDigit(char ch, int index) {
+    int digit = Character.digit(ch, 16);
+    if (digit == -1) {
+      throw new RuntimeException("Illegal hexadecimal character " + ch + " at index " + index);
+    }
+    return digit;
+  }
+}

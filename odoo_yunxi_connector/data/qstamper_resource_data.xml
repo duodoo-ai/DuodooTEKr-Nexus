@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+         <record id="cron_yunxi_token" model="yunxi.token">
+            <field name="name">获取云玺平台接口调用token</field>
+            <field name="appKey">ZYRGroup</field>
+            <field name="appSecret">3PUQ4u5w3AQg38OC</field>
+            <field name="tenant">zyrg</field>
+            <field name="url">http://58.222.101.110</field>
+            <field name="port">18585</field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_department_inherit_form" model="ir.ui.view">
+        <field name="name">hr.department.inherit.form</field>
+        <field name="model">hr.department</field>
+        <field name="inherit_id" ref="hr.view_department_form"/>
+        <field name="arch" type="xml">
+            <sheet>
+                <xpath expr="//group/group/field[@name='name']" position="after">
+                    <div class="oe_title">
+                        <h1>
+                            <field name="fnum" groups="base.group_erp_manager"/>
+                        </h1>
+                    </div>
+                </xpath>
+                <xpath expr="//field[@name='color']" position="after">
+                    <group col="4" string="e-shr键值信息">
+                        <field name="fid" groups="base.group_erp_manager"/>
+                    </group>
+                </xpath>
+            </sheet>
+        </field>
+    </record>
+
+    <record id="view_department_inherit_tree" model="ir.ui.view">
+        <field name="name">hr.department.inherit.tree</field>
+        <field name="model">hr.department</field>
+        <field name="inherit_id" ref="hr.view_department_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group/group/field[@name='name']" position="after">
+                <field name="fnum" groups="base.group_erp_manager"/>
+            </xpath>
+            <xpath expr="//field[@name='color']" position="after">
+                <field name="fid" groups="base.group_erp_manager"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
