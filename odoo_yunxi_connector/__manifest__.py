@@ -18,7 +18,7 @@
     """,
 
     'author': "Jason Zou",
-    "website": "www.duodoo.tech",
+    "website": "-",
 
     'category': '中国化应用/云玺印管集成业务接口',
     'version': '1.0',
