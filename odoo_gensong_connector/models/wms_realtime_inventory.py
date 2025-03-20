@@ -15,7 +15,7 @@ _logger = logging.getLogger(__name__)
 # 首先构造一个SDK实例
 api_sdk = K3CloudApiSdk()
 # config_node:配置文件中的节点名称
-api_sdk.Init(config_path='duodoo-ai/rhino-data-nexus/sdk/conf.ini', config_node='config')
+api_sdk.Init(config_path='rhino-data-nexus/sdk/conf.ini', config_node='config')
 # 此处仅构造保存接口的部分字段数据示例，使用时请参考WebAPI具体接口的实际参数列表
 current_time = time.strftime('%Y%m%d%H%M%S', time.localtime())
 
