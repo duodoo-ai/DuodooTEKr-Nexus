@@ -4,7 +4,7 @@
             id="yunxi_token_meu"
             name="云玺接口配置"
             action='action_yunxi_token'
-            parent="base_core.sub_interface_menu"
+            parent="odoo_base.sub_interface_menu"
             groups="base.user_admin"
             sequence="1010"/>
 </odoo>

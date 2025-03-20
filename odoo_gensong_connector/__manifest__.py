@@ -13,12 +13,12 @@
                     """,
 
     'author': "Jason Zou",
-    'website': "1",
+    "website": "-",
 
     'category': '中国化应用/智能仓储集成业务接口',
     'version': '1.0',
 
-    'depends': ['base','mail','base_warehouse'],
+    'depends': ['base','mail','odoo_gensong'],
 
     'data': [
         'data/warehouse_resource_cron.xml',

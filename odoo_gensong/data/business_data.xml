@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        <!-- 本模块的以下数据表可以清空 -->
+        <record id="remove_wms_dept_info" model="business.data.table">
+            <field name="name">wms.dept.info</field>
+        </record>
+        <record id="remove_wms_stock_info" model="business.data.table">
+            <field name="name">wms.stock.info</field>
+        </record>
+        <record id="remove_wms_unit_info" model="business.data.table">
+            <field name="name">wms.unit.info</field>
+        </record>
+        <record id="remove_wms_category_info" model="business.data.table">
+            <field name="name">wms.category.info</field>
+        </record>
+        <record id="remove_wms_material_info" model="business.data.table">
+            <field name="name">wms.material.info</field>
+        </record>
+    </data>
+</odoo>

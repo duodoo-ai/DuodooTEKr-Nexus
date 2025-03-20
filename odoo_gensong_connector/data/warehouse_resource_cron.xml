@@ -10,7 +10,7 @@
             <field name="priority">5</field>
             <field name="active">True</field>
             <field name="interval_number">30</field>
-            <field name="model_id" ref="interface_warehouse.model_wms_material_info"/>
+            <field name="model_id" ref="odoo_gensong.model_wms_material_info"/>
             <field name="state">code</field>
             <field name="code">model.action_material_BillQuery()</field>
         </record>
@@ -20,7 +20,7 @@
             <field name="priority">5</field>
             <field name="active">True</field>
             <field name="interval_number">1</field>
-            <field name="model_id" ref="interface_warehouse.model_wms_receipt_order"/>
+            <field name="model_id" ref="odoo_gensong.model_wms_receipt_order"/>
             <field name="state">code</field>
             <field name="code">model.action_StockIn_BillQuery()</field>
         </record>
@@ -30,7 +30,7 @@
             <field name="priority">5</field>
             <field name="active">True</field>
             <field name="interval_number">1</field>
-            <field name="model_id" ref="interface_warehouse.model_wms_ship_order"/>
+            <field name="model_id" ref="odoo_gensong.model_wms_ship_order"/>
             <field name="state">code</field>
             <field name="code">model.action_StockOut_BillQuery()</field>
         </record>
@@ -40,7 +40,7 @@
             <field name="priority">5</field>
             <field name="active">True</field>
             <field name="interval_number">30</field>
-            <field name="model_id" ref="interface_warehouse.model_wms_realtime_inventory"/>
+            <field name="model_id" ref="odoo_gensong.model_wms_realtime_inventory"/>
             <field name="state">code</field>
             <field name="code">model.action_realtime_inventory()</field>
         </record>
@@ -53,7 +53,7 @@
             <field name="priority">5</field>
             <field name="active">True</field>
             <field name="interval_number">1</field>
-            <field name="model_id" ref="interface_warehouse.model_wms_receipt_order"/>
+            <field name="model_id" ref="odoo_gensong.model_wms_receipt_order"/>
             <field name="state">code</field>
             <field name="code">model.Action_StockIn_Write_Back()</field>
         </record>
@@ -63,9 +63,20 @@
             <field name="priority">5</field>
             <field name="active">True</field>
             <field name="interval_number">1</field>
-            <field name="model_id" ref="interface_warehouse.model_wms_ship_order"/>
+            <field name="model_id" ref="odoo_gensong.model_wms_ship_order"/>
             <field name="state">code</field>
             <field name="code">model.Action_StockOut_Write_Back()</field>
+        </record>
+
+        <record id="cron_wms_prd_mo_query" model="ir.cron">
+            <field name="interval_type">minutes</field>
+            <field name="name">【自动任务】WMS7-生产订单侧单据同步（k3Cloud->中间平台）</field>
+            <field name="priority">5</field>
+            <field name="active">True</field>
+            <field name="interval_number">1</field>
+            <field name="model_id" ref="odoo_gensong.model_wms_receipt_order"/>
+            <field name="state">code</field>
+            <field name="code">model.action_Prd_Mo_BillQuery()</field>
         </record>
     </data>
 </odoo>

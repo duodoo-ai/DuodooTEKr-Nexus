@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_qstamper_filetype_tree" model="ir.ui.view">
+        <field name='name'>申请文件类型</field>
+        <field name="model">qstamper.file.type</field>
+        <field name="arch" type="xml">
+            <list string="申请文件类型" editable="top">
+                <field name="name" optional="show"/>
+                <field name="fileid" optional="show"/>
+                <field name="tenant" optional="show"/>
+                <field name="online" optional="show"/>
+                <field name="company_id" optional="hide"/>
+                <field name="id" optional="hide"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="action_qstamper_filetype" model="ir.actions.act_window">
+        <field name="name">申请文件类型</field>
+        <field name="res_model">qstamper.file.type</field>
+        <field name="view_mode">list</field>
+        <field name="context">{}</field>
+        <field name="search_view_id" ref=""/>
+        <field name="view_ids"
+               eval="[(5, 0, 0),
+                      (0, 0, {'view_mode': 'list', 'view_id': ref('view_qstamper_filetype_tree')}),
+                      ]"/>
+         <field name="help" type="html">
+            <p>
+               申请文件类型
+            </p>
+        </field>
+    </record>
+</odoo>

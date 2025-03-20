@@ -23,7 +23,7 @@
     'category': '中国化应用/云玺印管集成业务接口',
     'version': '1.0',
 
-    'depends': ['base','mail','base_core','base_qstamper'],
+    'depends': ['base','mail','base_core','odoo_yunxi'],
 
     'data': [
         'data/qstamper_resource_cron.xml',
