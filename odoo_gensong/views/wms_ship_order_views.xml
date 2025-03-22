@@ -7,6 +7,7 @@
             <list string="出库发货申请/出库完成反馈" editable="top" default_order="TMBillNo desc, Order">
                 <field name="TMBillNo" optional="show"/>
                 <field name="Order" optional="show"/>
+                <field name="FEntryID" optional="show"/>
                 <field name="BillType" optional="show"/>
                 <field name="MaterialId" optional="hide"/>
                 <field name="XCode" optional="show"/>

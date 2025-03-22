@@ -60,7 +60,7 @@ class WmsReceiptOrder(models.Model):
         unit_obj = self.env['wms.unit.info']
         para = {
             "FormId": "STK_INSTOCK",
-            "FieldKeys": "FBILLNO, FPOORDERNO, FOBJECTTYPEID, FMATERIALID, FUNITID, FLOT, FLOT_TEXT, FSTOCKID, FMUSTQTY, FREALQTY, FDocumentStatus, FCancelStatus",
+            "FieldKeys": "FBILLNO, FTreeEntity_FSEQ, FTreeEntity_FEntryID, FPOORDERNO, FOBJECTTYPEID, FMATERIALID, FUNITID, FLOT, FLOT_TEXT, FSTOCKID, FMUSTQTY, FREALQTY, FDocumentStatus, FCancelStatus",
             "FilterString": "'FBILLNO'=""",
             "OrderString": "",
             "TopRowCount": 2000,
@@ -84,11 +84,12 @@ class WmsReceiptOrder(models.Model):
                 warehouse_record = stock_obj.search([('StockId', '=', line['FSTOCKID'])])
                 unit_record = unit_obj.search([('UnitId', '=', line['FUNITID'])])
                 stock_in_record = stock_in_obj.search([('TMBillNo', '=', line['FBILLNO']),
-                                                     ('Order', '=', line['FMATERIALID'])])
+                                                     ('FEntryID', '=', line['FTreeEntity.FEntryID'])])
                 pv = {
                     'TMBillNo': line['FBILLNO'],
                     'POOrderNO': line['FPOORDERNO'],
-                    'Order': line['FMATERIALID'], # 由于云星空接口限制，取不到行号，用料号去唯一标识行号（同一张单据行料号不能出现重复情况）
+                    'Order': line['FTreeEntity.FSEQ'], # 由于云星空接口限制，取不到行号，用料号去唯一标识行号（同一张单据行料号不能出现重复情况）
+                    'FEntryID': line['FTreeEntity.FEntryID'],
                     'BillType': line['FOBJECTTYPEID'],
                     'MaterialId': material_record.id or False,
                     'XCode': material_record.XCode or False,
@@ -145,7 +146,7 @@ class WmsReceiptOrder(models.Model):
         unit_obj = self.env['wms.unit.info']
         para = {
             "FormId": "PRD_INSTOCK",
-            "FieldKeys": "FBILLNO, FFORMID, FMATERIALID, FUNITID, FLOT, FLOT_TEXT, FWORKSHOPID1, FSTOCKID, FMUSTQTY, FDocumentStatus, FCancelStatus",
+            "FieldKeys": "FBILLNO, FTreeEntity_FSEQ, FTreeEntity_FEntryID, FFORMID, FMATERIALID, FUNITID, FLOT, FLOT_TEXT, FWORKSHOPID1, FSTOCKID, FMUSTQTY, FDocumentStatus, FCancelStatus",
             "FilterString": "'FBILLNO'=""",
             "OrderString": "",
             "TopRowCount": 2000,
@@ -170,10 +171,11 @@ class WmsReceiptOrder(models.Model):
                 stock_record = stock_obj.search([('StockId', '=', line['FSTOCKID'])])
                 unit_record = unit_obj.search([('UnitId', '=', line['FUNITID'])])
                 stock_in_record = stock_in_obj.search([('TMBillNo', '=', line['FBILLNO']),
-                                                     ('Order', '=', line['FMATERIALID'])])
+                                                     ('FEntryID', '=', line['FTreeEntity.FEntryID'])])
                 pv = {
                     'TMBillNo': line['FBILLNO'],
-                    'Order': line['FMATERIALID'], # 由于云星空接口限制，取不到行号，用料号去唯一标识行号（同一张单据行料号不能出现重复情况）
+                    'Order': line['FTreeEntity.FSEQ'], # 由于云星空接口限制，取不到行号，用料号去唯一标识行号（同一张单据行料号不能出现重复情况）
+                    'FEntryID': line['FTreeEntity.FEntryID'],
                     'BillType': line['FFORMID'],
                     'MaterialId': material_record.id or False,
                     'XCode': material_record.XCode or False,

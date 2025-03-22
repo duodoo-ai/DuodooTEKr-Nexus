@@ -17,7 +17,8 @@ class WmsShipOrder(models.Model):
 
     # WMS扫码实时查询上位系统绑定的单据信息
     TMBillNo = fields.Char(string='出库单号', help='上位系统写入，不可为空。对应单号。')
-    Order = fields.Char(string='行号', help='上位系统写入，不可为空。对应物料号。')
+    Order = fields.Char(string='行号', help='上位系统写入，不可为空。对应行号。')
+    FEntryID = fields.Char(string='分录ID', help='上位系统写入，不可为空。对应单据明细行 分录ID。')
     BillType = fields.Char(string='单据类型', help='上位系统写入，不可为空')
     MaterialId = fields.Many2one('wms.material.info', string='物料ID', help='上位系统写入，不可为空')
     XCode = fields.Char(related='MaterialId.XCode', string='物料代码', help='上位系统写入，不可为空')
