@@ -18,7 +18,7 @@
     'category': '中国化应用/智能仓储集成方案',
     'version': '1.0',
 
-    'depends': ['base','mail'],
+    'depends': ['base','mail','odoo_base'],
 
     'data': [
         'data/business_data.xml',
