@@ -63,7 +63,7 @@ class WmsShipOrder(models.Model):
         unit_obj = self.env['wms.unit.info']
         para = {
             "FormId": "STK_TransferDirect",
-            "FieldKeys": "FBILLNO, FTreeEntity_FSEQ, FTreeEntity_FEntryID, FOBJECTTYPEID, FMATERIALID, FUNITID, FSrcStockID, FDestStockID, FQty, FLOT, FLOT_TEXT, FDOCUMENTSTATUS, FCANCELSTATUS",
+            "FieldKeys": "FBILLNO, FBillEntry_FSEQ, FBillEntry_FEntryID, FOBJECTTYPEID, FMATERIALID, FUNITID, FSrcStockID, FDestStockID, FQty, FLOT, FLOT_TEXT, FDOCUMENTSTATUS, FCANCELSTATUS",
             "FilterString": "'FBILLNO'=""",
             "OrderString": "",
             "TopRowCount": 1000,
@@ -88,11 +88,11 @@ class WmsShipOrder(models.Model):
                 DestStockID = stock_obj.search([('StockId', '=', line['FDestStockID'])])
                 unit_record = unit_obj.search([('UnitId', '=', line['FUNITID'])])
                 stock_out_record = stock_out_obj.search([('TMBillNo', '=', line['FBILLNO']),
-                                                         ('FEntryID', '=', line['FTreeEntity.FEntryID'])])
+                                                         ('FEntryID', '=', line['FBillEntry.FEntryID'])])
                 pv = {
                     'TMBillNo': line['FBILLNO'],
-                    'Order': line['FTreeEntity.FSEQ'], # 由于云星空接口限制，取不到行号，用料号去唯一标识行号（同一张单据行料号不能出现重复情况）
-                    'FEntryID': line['FTreeEntity.FEntryID'],
+                    'Order': line['FBillEntry.FSEQ'], # 由于云星空接口限制，取不到行号，用料号去唯一标识行号（同一张单据行料号不能出现重复情况）
+                    'FEntryID': line['FBillEntry.FEntryID'],
                     'BillType': line['FOBJECTTYPEID'],
                     'MaterialId': material_record.id or False,
                     'XCode': material_record.XCode or False,
@@ -150,7 +150,7 @@ class WmsShipOrder(models.Model):
         unit_obj = self.env['wms.unit.info']
         para = {
             "FormId": "PRD_PickMtrl",
-            "FieldKeys": "FBILLNO, FTreeEntity_FSEQ, FTreeEntity_FEntryID, FFORMID, FMATERIALID, FUNITID, FSTOCKID, FENTRYWORKSHOPID, FACTUALQTY, FLOT, FLOT_TEXT, FDOCUMENTSTATUS, FCANCELSTATUS",
+            "FieldKeys": "FBILLNO, FEntity_FSEQ, FEntity_FEntryID, FFORMID, FMATERIALID, FUNITID, FSTOCKID, FENTRYWORKSHOPID, FACTUALQTY, FLOT, FLOT_TEXT, FDOCUMENTSTATUS, FCANCELSTATUS",
             "FilterString": "'FBILLNO'=""",
             "OrderString": "",
             "TopRowCount": 1000,
@@ -175,11 +175,11 @@ class WmsShipOrder(models.Model):
                 workshop_record = stock_obj.search([('StockId', '=', line['FENTRYWORKSHOPID'])])
                 unit_record = unit_obj.search([('UnitId', '=', line['FUNITID'])])
                 stock_out_record = stock_out_obj.search([('TMBillNo', '=', line['FBILLNO']),
-                                                         ('FEntryID', '=', line['FTreeEntity.FEntryID'])])
+                                                         ('FEntryID', '=', line['FEntity.FEntryID'])])
                 pv = {
                     'TMBillNo': line['FBILLNO'],
-                    'Order': line['FTreeEntity.FSEQ'], # 由于云星空接口限制，取不到行号，用料号去唯一标识行号（同一张单据行料号不能出现重复情况）
-                    'FEntryID': line['FTreeEntity.FEntryID'],
+                    'Order': line['FEntity.FSEQ'], # 由于云星空接口限制，取不到行号，用料号去唯一标识行号（同一张单据行料号不能出现重复情况）
+                    'FEntryID': line['FEntity.FEntryID'],
                     'BillType': line['FFORMID'],
                     'MaterialId': material_record.id or False,
                     'XCode': material_record.XCode or False,
@@ -236,7 +236,7 @@ class WmsShipOrder(models.Model):
         unit_obj = self.env['wms.unit.info']
         para = {
             "FormId": "SP_PickMtrl",
-            "FieldKeys": "FBILLNO, FTreeEntity_FSEQ, FTreeEntity_FEntryID, FFORMID, FMATERIALID, FUNITID, FSTOCKID, FWORKSHOPID, FACTUALQTY, FLOT, FLOT_TEXT, FDOCUMENTSTATUS, FCANCELSTATUS",
+            "FieldKeys": "FBILLNO, FEntity_FSEQ, FEntity_FEntryID, FFORMID, FMATERIALID, FUNITID, FSTOCKID, FWORKSHOPID, FACTUALQTY, FLOT, FLOT_TEXT, FDOCUMENTSTATUS, FCANCELSTATUS",
             "FilterString": "'FBILLNO'=""",
             "OrderString": "",
             "TopRowCount": 1000,
@@ -261,11 +261,11 @@ class WmsShipOrder(models.Model):
                 workshop_record = stock_obj.search([('StockId', '=', line['FWORKSHOPID'])])
                 unit_record = unit_obj.search([('UnitId', '=', line['FUNITID'])])
                 stock_out_record = stock_out_obj.search([('TMBillNo', '=', line['FBILLNO']),
-                                                         ('FEntryID', '=', line['FTreeEntity.FEntryID'])])
+                                                         ('FEntryID', '=', line['FEntity.FEntryID'])])
                 pv = {
                     'TMBillNo': line['FBILLNO'],
-                    'Order': line['FTreeEntity.FSEQ'], # 由于云星空接口限制，取不到行号，用料号去唯一标识行号（同一张单据行料号不能出现重复情况）
-                    'FEntryID': line['FTreeEntity.FEntryID'],
+                    'Order': line['FEntity.FSEQ'], # 由于云星空接口限制，取不到行号，用料号去唯一标识行号（同一张单据行料号不能出现重复情况）
+                    'FEntryID': line['FEntity.FEntryID'],
                     'BillType': line['FFORMID'],
                     'MaterialId': material_record.id or False,
                     'XCode': material_record.XCode or False,
@@ -322,7 +322,7 @@ class WmsShipOrder(models.Model):
         unit_obj = self.env['wms.unit.info']
         para = {
             "FormId": "Stk_MisDelivery",
-            "FieldKeys": "FBILLNO, FTreeEntity_FSEQ, FTreeEntity_FEntryID, FOBJECTTYPEID, FMATERIALID, FUNITID, FSTOCKID, FQTY, FLOT, FLOT_TEXT, FDOCUMENTSTATUS, FCANCELSTATUS",
+            "FieldKeys": "FBILLNO, FEntity_FSEQ, FEntity_FEntryID, FOBJECTTYPEID, FMATERIALID, FUNITID, FSTOCKID, FQTY, FLOT, FLOT_TEXT, FDOCUMENTSTATUS, FCANCELSTATUS",
             "FilterString": "'FBILLNO'=""",
             "OrderString": "",
             "TopRowCount": 1000,
@@ -346,11 +346,11 @@ class WmsShipOrder(models.Model):
                 stock_record = stock_obj.search([('StockId', '=', line['FSTOCKID'])])
                 unit_record = unit_obj.search([('StockId', '=', line['FUNITID'])])
                 stock_out_record = stock_out_obj.search([('TMBillNo', '=', line['FBILLNO']),
-                                                         ('FEntryID', '=', line['FTreeEntity.FEntryID'])])
+                                                         ('FEntryID', '=', line['FEntity.FEntryID'])])
                 pv = {
                     'TMBillNo': line['FBILLNO'],
-                    'Order': line['FTreeEntity.FSEQ'], # 由于云星空接口限制，取不到行号，用料号去唯一标识行号（同一张单据行料号不能出现重复情况）
-                    'FEntryID': line['FTreeEntity.FEntryID'],
+                    'Order': line['FEntity.FSEQ'], # 由于云星空接口限制，取不到行号，用料号去唯一标识行号（同一张单据行料号不能出现重复情况）
+                    'FEntryID': line['FEntity.FEntryID'],
                     'BillType': line['FOBJECTTYPEID'],
                     'MaterialId': material_record.id or False,
                     'XCode': material_record.XCode or False,
