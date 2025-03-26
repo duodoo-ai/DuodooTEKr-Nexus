@@ -14,12 +14,15 @@ _logger = logging.getLogger(__name__)
 
 class EShrDepartment(models.Model):
     _inherit = 'hr.department'
-    _description = '金蝶e-shr组织架构同步'
 
-    fid = fields.Char(string='e-shr FID')
-    fnum = fields.Char(string='e-shr 部门编码')
+    fid = fields.Char(string='e-shr FID')   # 部门唯一ID
+    fnum = fields.Char(string='e-shr Department Code')  # 部门编码
+    level = fields.Char(string='e-shr Level')  # 部门层级
 
     def cron_org_from_shr(self):
+        # 金蝶e - shr组织架构同步
+        # Kingdee e-shr Organizational Synchronization
+        org_obj = self.env['hr.department']
         try:
             ms_conn = pymssql.connect(
                 host="%s" % host,
@@ -29,9 +32,14 @@ class EShrDepartment(models.Model):
                 charset="utf8")
             shr_cursor = ms_conn.cursor()  # 输出从SHR拿回来的记录集
         except Exception as e:
-            _logger.error('连接金蝶e-shr数据库失败，请检查网络连接是否正常! 更多可能是你的网络已断开连接！'
-                          '==> 连接目标地址：{} '
-                          '==> 错误详情：{} '
+            # 连接金蝶e-shr数据库失败，请检查网络连接是否正常! 更多可能是你的网络已断开连接！
+            # 连接目标地址
+            # 错误详情
+            _logger.error('Failed to connect to Kingdee e-shr database, '
+                          'please check if the network connection is normal! '
+                          'More likely, your network has been disconnected!'
+                          '==> Connect to the target address：{} '
+                          '==> Error details：{} '
                           .format(host, e))
             return
         sql = """
@@ -50,21 +58,25 @@ class EShrDepartment(models.Model):
         """
         shr_cursor.execute(sql)
         shr_records = shr_cursor.fetchall()
-        org_obj = self.env['hr.department']
         if len(shr_records) > 0:
-            for line in shr_records:    # 遍历写入数据
+            # 遍历写入数据
+            # Traverse and write data
+            for line in shr_records:
                 # 写入组织数据
-                org_record = org_obj.search([('orgIndexCode', '=', line[0])])
-                dept_id = org_obj.search([('orgIndexCode', '=', line[3])])
+                # Write organizational data
+                fid = org_obj.search([('fid', '=', line[0])])
+                dept_id = ''
+                if line[3]:
+                    dept_id = org_obj.search([('fid', '=', line[3])])
                 uv = {
-                    'orgIndexCode': line[0],  # 组织唯一标识码
+                    'fid': line[0],  # 组织唯一标识码  Unique code organization
                     'name': line[1] or False,
-                    'orgNo': line[2] or False,
-                    'parentOrgIndexCode': line[3] or False,
-                    'parent_id': dept_id and dept_id[0].id or False,
-                    'SyncState': 0,
+                    'fnum': line[2] or False,
+                    'parent_id': dept_id or False,
+                    'level': line[4]
                 }
-                if org_record:
-                    org_record.write(uv)
+                if fid:
+                    fid.write(uv)
                 else:
                     org_obj.create(uv)
+            self.env.cr.commit()

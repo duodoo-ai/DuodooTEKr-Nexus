@@ -24,7 +24,7 @@ class WmsRealtimeInventory(models.Model):
     StockId = fields.Many2one('wms.stock.info', string='仓库ID', help='上位系统写入，不可为空')
     StockCode = fields.Char(related='StockId.XCode', string='仓库编码', help='上位系统写入，不可为空')
     StockName = fields.Char(related='StockId.XName', string='仓库名称')
-    MaterialId = fields.Many2one('wms.material.info', string='物料代码', help='上位系统写入，不可为空')
+    MaterialId = fields.Many2one('wms.material.info', string='物料ID', help='上位系统写入，不可为空')
     MaterialCode = fields.Char(related='MaterialId.XCode', string='物料代码', help='上位系统写入，不可为空')
     MaterialName = fields.Char(related='MaterialId.XName', string='物料名称', help='上位系统写入，不可为空')
     Spec = fields.Char(string='规格型号', help='上位系统写入，不可为空')

@@ -78,7 +78,7 @@ class WmsReceiptOrder(models.Model):
         response = api_sdk.BillQuery(para)
         try:
             res = json.loads(response)
-            _logger.info('生产订单查询接口请求返回: {}'.format(res))
+            # _logger.info('生产订单查询接口请求返回: {}'.format(res))
         except Exception as e:
             _logger.error('生产订单查询接口请求返回错误: {}'.format(e))
         # print(res)

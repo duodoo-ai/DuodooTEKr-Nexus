@@ -1,38 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <record id="view_department_inherit_form" model="ir.ui.view">
+    <record id="inherit_view_department_form_2025" model="ir.ui.view">
         <field name="name">hr.department.inherit.form</field>
         <field name="model">hr.department</field>
         <field name="inherit_id" ref="hr.view_department_form"/>
         <field name="arch" type="xml">
             <sheet>
-                <xpath expr="//group/group/field[@name='name']" position="after">
-                    <div class="oe_title">
-                        <h1>
-                            <field name="fnum" groups="base.group_erp_manager"/>
-                        </h1>
-                    </div>
-                </xpath>
-                <xpath expr="//field[@name='color']" position="after">
-                    <group col="4" string="e-shr键值信息">
-                        <field name="fid" groups="base.group_erp_manager"/>
+                <xpath expr="//sheet/group" position="after">
+                    <group>
+                        <group string="e-shr Base Info">
+                            <field name="fnum"/>
+                            <field name="fid" readonly="1" groups="base.group_erp_manager"/>
+                            <field name="level" readonly="1" groups="base.group_erp_manager"/>
+                        </group>
                     </group>
                 </xpath>
             </sheet>
         </field>
     </record>
 
-    <record id="view_department_inherit_tree" model="ir.ui.view">
+    <record id="inherit_view_department_tree_2025" model="ir.ui.view">
         <field name="name">hr.department.inherit.tree</field>
         <field name="model">hr.department</field>
         <field name="inherit_id" ref="hr.view_department_tree"/>
         <field name="arch" type="xml">
-            <xpath expr="//group/group/field[@name='name']" position="after">
-                <field name="fnum" groups="base.group_erp_manager"/>
+            <xpath expr="//list/field[@name='name']" position="after">
+                <field name="fnum"/>
             </xpath>
             <xpath expr="//field[@name='color']" position="after">
                 <field name="fid" groups="base.group_erp_manager"/>
             </xpath>
         </field>
     </record>
+
+<!--    <record id="inherit_view_department_filter_2025" model="ir.ui.view">-->
+<!--        <field name="name">inherit.hr.department.search</field>-->
+<!--        <field name="model">hr.department</field>-->
+<!--        <field name="inherit_id" ref="hr.view_department_filter"/>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <xpath expr="//search/filter" position="after">-->
+<!--                &lt;!&ndash;Add a tree menu on the left side of the device view&ndash;&gt;-->
+<!--                <searchpanel>-->
+<!--                    <field name="company_id" expand="1" groups="base.group_multi_company" icon="fa-building" enable_counters="1"/>-->
+<!--                    <field name="parent_id" hierarchize="1" select="one" limit="2000" expand="1" icon="fa-users" enable_counters="1"/>-->
+<!--                </searchpanel>-->
+<!--            </xpath>-->
+<!--        </field>-->
+<!--    </record>-->
 </odoo>

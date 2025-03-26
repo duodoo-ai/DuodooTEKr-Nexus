@@ -4,24 +4,31 @@
 
     'summary': """
         Odoo与金蝶e-shr组织架构、职工信息集成
+        Odoo and Kingdee e-shr Organizational Structure, 
+        Employee Information Integration
     """,
 
-    'description': """Odoo与金蝶e-shr组织架构、职工信息集成
-                    更多支持：
-                    18951631470
-                    zou.jason@qq.com
-                    """,
+    'description': """
+        Odoo与金蝶e-shr组织架构、职工信息集成
+        Odoo and Kingdee e-shr Organizational Structure, 
+        Employee Information Integration
+        More support：
+        18951631470
+        zou.jason@qq.com
+        """,
 
     'author': "Jason Zou",
-    'website': "www.duodoo.tech",
+    'website': "-",
 
-    'category': '中国化应用/金蝶组织架构集成',
+    'category': 'Base/Shr-Organization',
     'version': '1.0',
 
     'depends': ['base','hr'],
 
     'data': [
+        'data/eshr_cron.xml',
         'views/hr_department_views.xml',
+        'views/hr_employee_views.xml',
     ],
     'installable': True,
     'application': True,

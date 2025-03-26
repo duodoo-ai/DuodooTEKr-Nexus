@@ -3,47 +3,27 @@
 @Time    : 2024/11/26 10:26
 @Author  : Jason Zou
 @Email   : zou.jason@qq.com
-@Company: 中裕软管科技股份有限公司
+@mobile  : 18951631470
 """
 import logging
 import pymssql
-import time
-from .conn import *
+from .eshr_conn import *
 from odoo import fields, models, api
 _logger = logging.getLogger(__name__)
 
 
-class HikvisionPersonList(models.Model):
-    _inherit = 'hikvision.person.list'
+class EShrEmployee(models.Model):
+    _inherit = 'hr.employee'
 
-    def shr_to_hikvision(self):
-        """组织职工信息同步任务  完成SHR同步、 海康平台更新、 职工向海康新增 三个动作"""
-        self.action_gen_person_from_shr()   # 从SHR拿待同步记录集
-        time.sleep(2)
-        self.action_person_list()  # 从海康平台更新中间平台的海康人员ID
-        time.sleep(2)
-        self.action_person_batch_add()  # 从中间平台批量向海康平台同步增加人员
-        time.sleep(2)
-        self.action_person_batch_useStatus()  # 从中间平台批量向海康平台同步冻结人员
+    fid = fields.Char(string='e-shr FID')   # 职工唯一ID
+    fnum = fields.Char(string='e-shr Employee Code')  # 职工编码
 
-    @api.model
-    def get_model_id(self):
-        model_id = self.env['ir.model'].search([('model', '=', self._name)]).id
-        return model_id
-
-    def create_server_success_log(self, msg, args1, args2, args3):
-        log_obj = self.env['server.log']
-        log_obj.create({'model_id': self.get_model_id(),
-                        'name': '[%s]-[%s]-[%s]-[%s]' % (msg, args1, args2, args3)})
-        _logger.info("-1 [%s]-[%s]-[%s]-[%s]" % (msg, args1, args2, args3))
-
-    def create_server_failures_log(self, msg, args1, args2, args3):
-        log_obj = self.env['server.log']
-        log_obj.create({'model_id': self.get_model_id(),
-                        'name': '[%s]-[%s]-[%s]-[%s]' % (msg, args1, args2, args3)})
-        _logger.info("-2 [%s]-[%s]-[%s]-[%s]" % (msg, args1, args2, args3))
-
-    def action_gen_person_from_shr(self):
+    def cron_employee_from_shr(self):
+        """完成SHR同步职工信息同步"""
+        _obj = self.env['hr.employee']
+        a_obj = self.env['hr.department']
+        rel_obj = self.env['res.partner']
+        user_obj = self.env['res.users']
         try:
             ms_conn = pymssql.connect(
                 host="%s" % host,
@@ -53,29 +33,34 @@ class HikvisionPersonList(models.Model):
                 charset="utf8")
             shr_cursor = ms_conn.cursor()  # 输出从SHR拿回来的记录集
         except Exception as e:
-            _logger.error('连接金蝶SHR数据库失败，请检查网络连接是否正常! 更多可能是你的网络已断开连接！'
-                          '==> 连接目标地址：{} '
-                          '==> 错误详情：{} '
+            # 连接金蝶e-shr数据库失败，请检查网络连接是否正常! 更多可能是你的网络已断开连接！
+            # 连接目标地址
+            # 错误详情
+            _logger.error('Failed to connect to Kingdee e-shr database, '
+                          'please check if the network connection is normal! '
+                          'More likely, your network has been disconnected!'
+                          '==> Connect to the target address：{} '
+                          '==> Error details：{} '
                           .format(host, e))
             return
         sql = """
             select t.*, thpp.FImageData from (
                 SELECT
-                    distinct ps.fid as FPersonID,
-                    ps.fnumber 职工编码,
-                    ps.fname_l2 真实姓名,
-                    ps.FIDCardNO 身份证号,
-                    ad.fid 部门ID,
-                    ad.fnumber 部门编码,
-                    ad.fname_l2 部门名称,
-                    ps.fcell 手机号,
-                    ps.FBirthday 出生日期,
-                    pm.FBeginDate 入司日期,
-                    ps.FGender 性别,
-                    cpos.fname_l2 职位,
-                    pt.fname_l2 状态,
-                    ad.fparentid 上级部门编码,
-                    ps.FFullNamePingYin 拼音
+                    distinct ps.fid as FPersonID,	--职工ID
+                    ps.fnumber employee_code,	--职工编码
+                    ps.fname_l2 real_name,	--真实姓名
+                    ps.FIDCardNO IDNO,	--身份证号
+                    ad.fid department_id,	--部门ID
+                    ad.fnumber department_code,	--部门编码
+                    ad.fname_l2 department_name,	--部门名称
+                    ps.fcell phone_no,	--手机号
+                    ps.FBirthday birthday,	--出生日期
+                    pm.FBeginDate joined_date,	--入司日期
+                    ps.FGender gender,	--性别
+                    cpos.fname_l2 position,	--职位
+                    pt.fname_l2 status,	--状态
+                    ad.fparentid parent_department_code,	  --上级部门编码
+                    ps.FFullNamePingYin pingyin	--拼音
                 FROM
                     t_BD_person ps	
                 LEFT JOIN T_HR_BDEmployeeType pt on pt.fid = ps.femployeetypeid
@@ -90,36 +75,122 @@ class HikvisionPersonList(models.Model):
                 WHERE PS.FID IS NOT NULL 
                 ) t
                 LEFT JOIN T_HR_PersonPhoto thpp ON thpp.FPersonID = t.fpersonid 
-                ORDER BY 部门编码, 职工编码
+                ORDER BY department_code DESC , employee_code
         """
         shr_cursor.execute(sql)
         shr_records = shr_cursor.fetchall()
-        org_obj = self.env['hikvision.org.list']
-        person_obj = self.env['hikvision.person.list']
         if len(shr_records) > 0:
-            for line in shr_records:    # 遍历写入数据
-                # 写入职工数据
-                person_record = person_obj.search([('FPersonID', '=', line[0])])
-                dept_id = org_obj.search([('orgIndexCode', '=', line[4])])
-                pv = {
-                    'FPersonID': line[0],
-                    'jobNo': line[1],
-                    'name': line[2],
-                    'FIDCardNO': line[3] or False,
-                    'dept_fid': dept_id.id or False,
-                    'dept_code': dept_id.orgNo or False,
-                    'dept_name': dept_id.name or False,
-                    'fcell': line[7] or False,
-                    'FBirthday': line[8] or False,
-                    'FBeginDate': line[9] or False,
-                    'FGender': str(line[10]) or False,
-                    'position': line[11] or False,
-                    'EmployeeType': line[12] or False,
-                    'pinyin': line[14] or False,
-                    'wo_person_picture_attachment': line[15] or False,
-                    'SyncState': 0,
+            i = 0
+            for r in shr_records:    # 遍历写入数据
+                login = r[4] or r[5] or r[7]
+                if login in ('0', '#REF!'):
+                    login = r[4] or r[5] or r[7]
+                sql = """select id from res_users where login = '%s' and active = false """
+                sql = sql % login
+                try:
+                    self._cr.execute(sql)
+                    text = self._cr.fetchall()
+                except Exception as e:
+                    self._cr.rollback()
+                    text = False
+                bUserCreated = False
+                user_record = self.env['res.users']
+                if text:
+                    bUserCreated = True
+                    if bUserCreated:
+                        record_u = user_obj.search(['&', ('login', '=', login), ('active', '=', False)])
+                        if record_u:
+                            record_u.write({'active': True})  # 用户
+                            # 职工
+                        _obj.search(['&', ('user_id', '=', record_u.id), ('active', '=', False)]).write({'active': True})
+                        # 联系人
+                        rel_obj.search(['&', ('user_id', '=', record_u.id), ('active', '=', False)]).write(
+                            {'active': True})
+                dept_ids = a_obj.sudo().search([('name', '=', r[3])])
+                if not bUserCreated:
+                    rel_records = rel_obj.with_context(active_test=True). \
+                        search([('employee', '=', True), '|', ('name', '=', r[1]), ('ref', '=', r[2])])  # 联系人表
+                    pv = {
+                        'name': r[1],
+                        'ref': r[2],
+                        'employee': True,
+                        'email': r[4],
+                        'mobile': r[5],
+                        'phone': r[5],
+                        'lang': 'zh_CN',
+                        'type': 'contact',
+                        'is_company': False,
+                        'active': True,
+                        'company_id': dept_ids and dept_ids[0].company_id.id or 1,
+                        'tz': 'Asia/Shanghai',
+                        'function': r[12],
                     }
-                if person_record:
-                    person_record.write(pv)
+                    if not rel_records:
+                        rel_record = rel_obj.with_context(tracking_disable=True).create(pv)
+                    else:
+                        rel_records.with_context(tracking_disable=True).write(pv)
+                        rel_record = rel_records[0]  # 定义用户登录信息
+                    user_records = user_obj.search(['|', ('name', '=', r[1]), ('login', '=', login)])
+                    if not user_records:
+                        uv = {
+                            'name': r[1],
+                            'active': True,
+                            'login': login,
+                            'email': r[4],
+                            'password': r[6][-6:] or '098iop',
+                            'partner_id': rel_record.id,
+                            'company_id': dept_ids and dept_ids[0].company_id.id or 1,
+                            'company_ids': [(6, 0, [dept_ids and dept_ids[0].company_id.id or 1])],
+                            'groups_id': [(6, 0, [3, ])],
+                            'notification_type': 'email',
+                            'odoobot_state': 'not_initialized',
+                            'tz': 'Asia/Shanghai',
+                            'sel_groups_1_8_9': 1,
+                        }
+                        user_record = user_obj.with_context(tracking_disable=True).create(uv)
+                    else:
+                        user_record = user_records[0]
+
+                _record = _obj.with_context(active_test=True).search(['|', ('name', '=', r[1]), ('fid', '=', r[0])])
+                lead_ids = _obj.search([('name', '=', r[13])])
+                pv = {
+                    'name': r[1],
+                    'fid': r[0],
+                    'fnumber': r[2],
+                    'department_id': dept_ids and dept_ids[0].id or False,
+                    'company_id': dept_ids and dept_ids[0].company_id.id or 1,
+                    'user_id': user_record.id or False,
+                    'work_email': r[4],
+                    'mobile_phone': r[5],
+                    'work_phone': r[10],
+                    'identification_id': r[6],
+                    'work_location': False,
+                    'address_id': 1,
+                    'job_title': r[12] or False,
+                    'parent_id': lead_ids and lead_ids[0].id or False,
+                    'gender': r[11] or False,
+                    'marital': False,
+                    'country_id': 48,
+                    'country_of_birth': 48,
+                }
+                # hr_employee 对象处理
+                if _record:
+                    try:
+                        _record.with_context(tracking_disable=True).write(pv)
+                    except Exception as e:
+                        _logger.error('更新数据 hr.employee 异常. 员工名"' + r[1] + '".' + str(e))
                 else:
-                    person_obj.create(pv)
+                    try:
+                        _obj.with_context(tracking_disable=True).create(pv)
+                    except Exception as e:
+                        _logger.error('创建 hr.employee 异常. 员工名"' + r[1] + '".' + str(e) + '. ERROR AT 336')
+                if r[8]:
+                    rel_obj.with_context(active_test=True, tracking_disable=True). \
+                        search([('employee', '=', True), '|', ('name', '=', r[1]), ('ref', '=', r[2])]).write(
+                        {'active': False})
+                    user_obj.with_context(active_test=True, tracking_disable=True). \
+                        search(['|', ('name', '=', r[1]), ('login', '=', login)]).write({'active': False})
+                i += 1
+                if i % 100 == 0:
+                    self.env.cr.commit()
+            self.env.cr.commit()

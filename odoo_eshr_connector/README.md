@@ -1,12 +1,7 @@
 
+[eshr_department.py](models/eshr_department.py)
 
-文件夹和文件说明:
-(1) moudle 文件夹下放置安全认证库代码
-(2) doc 文件夹下放置文档
-(3) demo文件夹下放置示例代码，开发者可参考示例代码进行开发
-	
+1、金蝶e-shr组织架构同步 Kingdee e-shr Organizational Synchronization
 
-
-数据使用说明：
-(1) 接口只同步 用工关系状态为 【正式员工  试用员工】 的人员信息
-(2) 职工编码ZY00168为合法编码，(Y12)ZY00168 (Y12)括号部分为不合法编码  
+[eshr_employee.py](models/eshr_employee.py)
+2、完成SHR同步职工信息同步 Complete SHR synchronization of employee information synchronization
