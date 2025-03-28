@@ -93,15 +93,16 @@ class EShrEmployee(models.Model):
         if len(shr_records) > 0:
             i = 0
             for r in shr_records:    # 遍历写入数据
-                login = r[7] or r[16] or r[1]
+                login = r[7] or r[1] or r[16]
                 if login in ('0', '#REF!'):
-                    login = r[7] or r[16] or r[1]
+                    login = r[7] or r[1] or r[16]
+                sql = """select id from res_users where login = '%s' and active = false """
+                sql = sql % login
                 try:
-                    sql = """select id from res_users where login = '%s' and active = false """
-                    sql = sql % login
                     self._cr.execute(sql)
                     text = self._cr.fetchall()
                 except Exception as e:
+                    _logger.error(f'User Search Error: {e}')
                     self._cr.rollback()
                     text = False
                 bUserCreated = False
@@ -112,9 +113,9 @@ class EShrEmployee(models.Model):
                         record_u = user_obj.search(['&', ('login', '=', login), ('active', '=', False)])
                         if record_u:
                             record_u.write({'active': True})  # 用户
-                            # 职工
+                        # 职工激活
                         _obj.search(['&', ('user_id', '=', record_u.id), ('active', '=', False)]).write({'active': True})
-                        # 联系人
+                        # 联系人激活
                         rel_obj.search(['&', ('user_id', '=', record_u.id), ('active', '=', False)]).write({'active': True})
                 dept_ids = a_obj.sudo().search([('name', '=', r[6])])
                 if not bUserCreated:
@@ -143,7 +144,7 @@ class EShrEmployee(models.Model):
                     if not user_records:
                         uv = {
                             'name': r[2],
-                            'active': True if r[14] == '1' else False,
+                            'active': True,
                             'login': login,
                             'email': r[8],
                             'password': '098iop2025',
@@ -159,7 +160,7 @@ class EShrEmployee(models.Model):
                     else:
                         user_record = user_records[0]
 
-                _record = _obj.search(['|', ('name', '=', r[2]), ('fid', '=', r[0])])
+                _record = _obj.search(['|', ('name', '=', r[7]), ('fid', '=', r[0])])
                 lead_ids = _obj.search([('name', '=', r[16])])
                 pv = {
                     'name': r[2],
@@ -181,7 +182,7 @@ class EShrEmployee(models.Model):
                     'marital': r[12] ,
                     'country_id': 48,
                     'country_of_birth': 48,
-                    'active': True if r[14] == '1' else False,
+                    'active': True,
                 }
                 # hr_employee 对象处理
                 if _record:
@@ -191,7 +192,7 @@ class EShrEmployee(models.Model):
                         _logger.error('Update hr.employee Abnormal.Employee Name:"' + r[1] + '".' + str(e))
                 else:
                     try:
-                        _obj.with_context(tracking_disable=True).create(pv)
+                        _obj.create(pv)
                     except Exception as e:
                         _logger.error('Create hr.employee Abnormal.Employee Name:"' + r[1] + '".' + str(e) + '. ERROR AT 336')
                 if r[8]:
