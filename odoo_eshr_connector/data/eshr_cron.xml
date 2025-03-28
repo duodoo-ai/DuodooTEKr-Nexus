@@ -3,7 +3,7 @@
     <data noupdate="0">
         <record id="cron_shr_org_to_odoo" model="ir.cron">
             <field name="interval_type">minutes</field>
-            <field name="name">【组织同步】SHR01-部门信息同步任务（SHR->中间平台）</field>
+            <field name="name">【OrgSync】SHR01 Departmental Information Synch Task (SHR ->Intermediate Platform)</field>
             <field name="priority">5</field>
             <field name="active">False</field>
             <field name="interval_number">30</field>
@@ -14,7 +14,7 @@
 
         <record id="cron_shr_employee_to_odoo" model="ir.cron">
             <field name="interval_type">minutes</field>
-            <field name="name">【组织同步】SHR02-职工信息同步任务（SHR->中间平台）</field>
+            <field name="name">【OrgSync】SHR02 Employee Information Synch Task (SHR ->Intermediate Platform)</field>
             <field name="priority">5</field>
             <field name="active">False</field>
             <field name="interval_number">30</field>

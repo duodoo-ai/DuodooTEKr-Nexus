@@ -25,6 +25,7 @@ class WmsReceiptOrder(models.Model):
     XCode = fields.Char(related='MaterialId.XCode', string='物料代码', help='上位系统写入，不可为空')
     XName = fields.Char(related='MaterialId.XName', string='物料名称', help='上位系统写入，不可为空')
     Spec = fields.Char(related='MaterialId.Spec', string='规格型号', help='上位系统写入')
+    mnemoniccode = fields.Char(string='零件号', help='上位系统写入')
     Quantity = fields.Char(string='计划数量', help='上位系统写入，不可为空')
     UnitId = fields.Many2one('wms.unit.info', string='基础单位ID', help='上位系统写入，不可为空')
     UnitCode = fields.Char(related='UnitId.XCode', string='单位编码', help='上位系统写入，不可为空')

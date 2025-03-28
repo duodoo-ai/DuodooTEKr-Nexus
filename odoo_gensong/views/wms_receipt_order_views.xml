@@ -24,6 +24,7 @@
                 <field name="RkStockId" optional="hide"/>
                 <field name="RkCode" optional="show"/>
                 <field name="RkName" optional="show"/>
+                <field name="mnemoniccode" optional="show"/>
                 <field name="ActualQty" optional="show"/>
                 <field name="DocumentStatus" optional="show"/>
                 <field name="CancelStatus" optional="hide"/>

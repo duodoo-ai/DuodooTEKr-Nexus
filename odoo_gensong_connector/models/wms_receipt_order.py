@@ -95,7 +95,7 @@ class WmsReceiptOrder(models.Model):
                     'XCode': material_record.XCode or False,
                     'XName': material_record.XName or False,
                     'Spec': material_record.Spec or False,
-                    'Quantity': line['FMUSTQTY'] or False,
+                    'Quantity': line['FREALQTY'] or False,
                     'UnitId': unit_record.id or False,
                     'UnitCode': unit_record.XCode or False,
                     'UnitName': unit_record.XName or False,
@@ -146,7 +146,7 @@ class WmsReceiptOrder(models.Model):
         unit_obj = self.env['wms.unit.info']
         para = {
             "FormId": "PRD_INSTOCK",
-            "FieldKeys": "FBILLNO, FEntity_FSEQ, FEntity_FEntryID, FFORMID, FMATERIALID, FUNITID, FLOT, FLOT_TEXT, FWORKSHOPID1, FSTOCKID, FMUSTQTY, FDocumentStatus, FCancelStatus",
+            "FieldKeys": "FBILLNO, FEntity_FSEQ, FEntity_FEntryID, FFORMID, FMATERIALID, FUNITID, FLOT, FLOT_TEXT, FWORKSHOPID1, FSTOCKID, FMUSTQTY, FRealQTY, FDocumentStatus, FCancelStatus",
             "FilterString": "'FBILLNO'=""",
             "OrderString": "",
             "TopRowCount": 2000,
@@ -181,7 +181,7 @@ class WmsReceiptOrder(models.Model):
                     'XCode': material_record.XCode or False,
                     'XName': material_record.XName or False,
                     'Spec': material_record.Spec or False,
-                    'Quantity': line['FMUSTQTY'] or False,
+                    'Quantity': line['FRealQTY'] or False,
                     'UnitId': unit_record.id or False,
                     'UnitCode': unit_record.XCode or False,
                     'UnitName': unit_record.XName or False,

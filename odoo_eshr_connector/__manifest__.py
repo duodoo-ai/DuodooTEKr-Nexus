@@ -2,16 +2,16 @@
 {
     'name': "Odoo Kingdee Shr Connector",
 
-    'summary': """
-        Odoo与金蝶e-shr组织架构、职工信息集成
+    'summary': """        
         Odoo and Kingdee e-shr Organizational Structure, 
         Employee Information Integration
+        Odoo与金蝶e-shr组织架构、职工信息集成
     """,
 
-    'description': """
-        Odoo与金蝶e-shr组织架构、职工信息集成
+    'description': """        
         Odoo and Kingdee e-shr Organizational Structure, 
         Employee Information Integration
+        Odoo与金蝶e-shr组织架构、职工信息集成
         More support：
         18951631470
         zou.jason@qq.com
