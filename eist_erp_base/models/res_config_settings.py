@@ -19,8 +19,15 @@ class ResConfigSettings(models.TransientModel):
         config_parameter="eist_erp.hide_enterprise_app",
     )
 
-    # 解决方案
+    # 解决方案-Pos
     module_eist_pos = fields.Boolean(string="Solutions for stores and restaurants", default=False)
+
+    # 解决方案-社交应用
+    module_eist_social_app = fields.Boolean(string="Integrate social app solutions", default=False)
+    module_eist_social_wechat = fields.Boolean(string="WeChat integration", default=False)
+    module_eist_social_wecom = fields.Boolean(string="Wecom integration", default=False)
+    module_eist_social_feishu = fields.Boolean(string="Feishu integration", default=False)
+    module_eist_social_dingding = fields.Boolean(string="Dingding integration", default=False)
 
     # 扩展功能
     module_esit_geolocalize = fields.Boolean(string="Partners Geolocation", default=False)

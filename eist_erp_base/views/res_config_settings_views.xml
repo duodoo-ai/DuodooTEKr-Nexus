@@ -49,7 +49,8 @@
                                 <field name="module_eist_web_theme" string="Web Theme" />
                                 <div class="content-group" invisible="not module_eist_web_theme" id="msg_eist_web_theme">
                                     <div class="mt16 text-warning">
-                                        <strong>Save</strong> this page and come back here to set up the feature.</div>
+                                        <strong>Save</strong> this page and come back here to set up the feature.
+                                    </div>
                                 </div>
                             </setting>
 
@@ -57,7 +58,8 @@
                                 <field name="module_eist_web_toolbox"/>
                                 <div class="content-group" invisible="not module_eist_web_toolbox" id="msg_module_eist_web_toolbox">
                                     <div class="mt16 text-warning">
-                                        <strong>Save</strong> this page and come back here to set up the feature.</div>
+                                        <strong>Save</strong> this page and come back here to set up the feature.
+                                    </div>
                                 </div>
                             </setting>
 
@@ -65,7 +67,8 @@
                                 <field name="module_eist_report_management" string="Report Management"/>
                                 <div class="content-group" invisible="not module_eist_report_management" id="msg_module_eist_report_management">
                                     <div class="mt16 text-warning">
-                                        <strong>Save</strong> this page and come back here to set up the feature.</div>
+                                        <strong>Save</strong> this page and come back here to set up the feature.
+                                    </div>
                                 </div>
                             </setting>
 
@@ -80,7 +83,18 @@
                                 <field name="module_eist_pos" />
                                 <div class="content-group" invisible="not module_eist_pos" id="msg_eist_pos">
                                     <div class="mt16 text-warning">
-                                        <strong>Save</strong> this page and come back here to set up the feature.</div>
+                                        <strong>Save</strong> this page and come back here to set up the feature.
+                                    </div>
+                                </div>
+                            </setting>
+
+
+                            <setting id="eist_social_app_setting" help="Integrate social app instant messaging features, such as social app authentication login, use social app to send notifications, sync social app organizational structure, etc.">
+                                <field name="module_eist_social_app" />
+                                <div class="content-group" invisible="not module_eist_social_app" id="msg_eist_social_app">
+                                    <div class="mt16 text-warning">
+                                        <strong>Save</strong> this page and come back here to set up the feature.
+                                    </div>
                                 </div>
                             </setting>
 
@@ -91,12 +105,14 @@
                     <div id="eist_extended_functionality">
                         <block title="Extended functionality" name="eist_extended_functionality_settings">
 
-                            <setting id="esit_geolocalize_setting" help="Use the China e-map to get the geographical location of the partner">
+                            <setting id="esit_geolocalize_setting" help="On the basis of the original electronic map provider, the Chinese electronic map provider will be added to enhance the ability to obtain the geographical location of partners.">
                                 <field name="module_esit_geolocalize" />
                                 <div class="content-group" invisible="not module_esit_geolocalize" id="msg_esit_geolocalize">
                                     <div class="mt16 text-warning">
-                                        <strong>Save</strong> this page and come back here to set up the feature.</div>
+                                        <strong>Save</strong> this page and come back here to set up the feature.
+                                    </div>
                                 </div>
+                                
                             </setting>
 
                         </block>

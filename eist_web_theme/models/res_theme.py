@@ -116,6 +116,7 @@ class ResTheme(models.Model):
     list_rows_limit = fields.Selection(
         string="Number of rows in the list",
         selection=[
+            ("20", "20 rows"),
             ("40", "40 rows"),
             ("80", "80 rows"),
             ("100", "100 rows"),

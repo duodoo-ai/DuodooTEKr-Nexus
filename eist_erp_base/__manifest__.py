@@ -18,6 +18,7 @@
     "auto_install": False,
     "data": [
         "security/core_security.xml",
+        "views/res_partner_views.xml",
         "views/res_company_views.xml",
         "views/webclient_templates.xml",
         "views/res_config_settings_views.xml",

@@ -2,7 +2,8 @@
 
 from odoo import api, fields, models, _
 
-class ResPartner(models.Model):
-    _inherit = 'res.partner'
 
-    fax = fields.Char(string="Fax",unaccent=False)
+class ResPartner(models.Model):
+    _inherit = "res.partner"
+
+    fax = fields.Char(string="Fax")
