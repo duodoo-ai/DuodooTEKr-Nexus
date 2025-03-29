@@ -7,7 +7,10 @@
 from odoo import models, fields
 
 
-class StaffEMPAccount(models.Model):
-    _inherit = 'staff'
+class HrEmpAccount(models.Model):
+    _inherit = 'hr.employee'
 
-    ewc_enable = fields.Boolean(string='禁用企业微信', default=False, help='企微：勾选表示禁用成员，默认不勾选')
+    ewc_employee_order = fields.Char(string='WeChat FID')  # WeChat职工账号
+    ewc_enable = fields.Boolean(string='Enable Employee', default=True,
+                                help='Check to Disable sync, default checked')  # 默认启用企业微信职工
+

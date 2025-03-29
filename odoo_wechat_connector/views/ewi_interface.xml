@@ -8,8 +8,7 @@
                 <field name="name"/>
                 <field name="description" optional="show"/>
                 <button name="btn_execute" string="执行此接口" type="object" class="btn-primary" icon="fa-search-plus"/>
-                <field name="AgentId" optional="show"/>
-                <field name="Secret" optional="show"/>
+                <field name="agentId" optional="show"/>
                 <field name="url" optional="show"/>
                 <field name="errmsg" optional="show"/>
                 <field name="id" optional="hide"/>
@@ -30,8 +29,8 @@
                         <group>
                             <field name="name" readonly="1"/>
                             <field name="description" readonly="1"/>
-                            <field name="AgentId"/>
-                            <field name="Secret"/>
+                            <field name="agentId"/>
+                            <field name="secret"/>
                             <field name="url"/>
                         </group>
                     </group>

@@ -5,9 +5,9 @@
         <field name="model">ewi.wechat.config</field>
         <field name="arch" type="xml">
             <list string='接口认证信息'>
-                <button name="gen_approval_access_token" string="刷新密钥" type="object" class="btn-primary" icon="fa-search-plus"/>
                 <field name="name"/>
                 <field name="corp_id"/>
+                <field name="secret"/>
             </list>
         </field>
     </record>
@@ -17,13 +17,11 @@
         <field name="model">ewi.wechat.config</field>
         <field name="arch" type="xml">
            <form string="接口认证信息" create="0" delete="0">
-                <header>
-                    <button name="gen_approval_access_token" string="刷新密钥" type="object" class="btn-primary" icon="fa-search-plus"/>
-                </header>
                 <sheet name="odoo_wechat">
                     <group string="企业ID">
                         <field name="name" readonly="1"/>
                         <field name="corp_id"/>
+                        <field name="secret"/>
                     </group>
                     <group string="审批应用对接配置">
                         <field name="sp_AgentId"/>

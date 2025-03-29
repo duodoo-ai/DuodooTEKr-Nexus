@@ -7,13 +7,9 @@
 from odoo import models, fields, api
 
 
-class StaffDeptManage(models.Model):
+class HrDeptManage(models.Model):
     _inherit = 'hr.department'
 
-    ewc_dept_order = fields.Integer('企微部门order', store=True)
+    ewc_dept_order = fields.Integer(string='WeChat FID') # WeChat部门唯一ID
 
-    # @api.depends('depart_code', 'name', 'parent_id', 'dtype')
-    # def _compute_ewc_dept_order(self):
-    #     """计算企业微信部门排序号"""
-    #     for order in self:
-    #         order.update({'ewc_dept_order': -(int(order.depart_code) - 9999999)})
+
