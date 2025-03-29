@@ -27,6 +27,7 @@ class EShrEmployee(models.Model):
         a_obj = self.env['hr.department']
         rel_obj = self.env['res.partner']
         user_obj = self.env['res.users']
+        job_obj = self.env['hr.job']
         try:
             ms_conn = pymssql.connect(
                 host="%s" % host,
@@ -71,7 +72,10 @@ class EShrEmployee(models.Model):
                     	when pt.fname_l2 in ('正式员工', '试用员工', '实习') then '1' else '0'
                     end 状态,	--状态
                     ad.fparentid 上级部门编码,	  --上级部门编码
-                    ps.FFullNamePingYin 拼音	--拼音
+                    ps.FFullNamePingYin 拼音,	--拼音
+                    cpos.fid position_id,	--职位ID
+                    pps.fid parent_fid,	-- 上级职工编码
+					pps.fname_l2 parent_name   -- 上级职工姓名
                 FROM
                     t_BD_person ps	
                 LEFT JOIN T_HR_BDEmployeeType pt on pt.fid = ps.femployeetypeid
@@ -159,9 +163,19 @@ class EShrEmployee(models.Model):
                         user_record = user_obj.create(uv)
                     else:
                         user_record = user_records[0]
-
+                # -----------------------------
+                job_id = job_obj.search([('fid', '=', r[17])])      # 定义工作岗位
+                pv = {
+                    'name': r[13] or '职员',
+                    'fid': r[17],
+                }
+                if job_id:
+                    job_id.write(pv)
+                else:
+                    job_obj.create(pv)
+                # -----------------------------
                 _record = _obj.search(['|', ('name', '=', r[7]), ('fid', '=', r[0])])
-                lead_ids = _obj.search([('name', '=', r[16])])
+                lead_ids = _obj.search([('fid', '=', r[18])])    # 定义职工信息
                 pv = {
                     'name': r[2],
                     'fid': r[0],
@@ -176,6 +190,7 @@ class EShrEmployee(models.Model):
                     'birthday': r[9],
                     'work_location_id': False,
                     'address_id': 1,
+                    'job_id': job_id.id or False,
                     'job_title': r[13] or False,
                     'parent_id': lead_ids and lead_ids[0].id or False,
                     'gender': r[11] or False,

@@ -22,7 +22,7 @@ class EShrDepartment(models.Model):
     def cron_org_from_shr(self):
         # 金蝶e - shr组织架构同步
         # Kingdee e-shr Organizational Synchronization
-        org_obj = self.env['hr.department']
+        org_obj = self.with_user(2).env['hr.department']
         try:
             ms_conn = pymssql.connect(
                 host="%s" % host,
@@ -65,16 +65,20 @@ class EShrDepartment(models.Model):
                 # 写入组织数据
                 # Write organizational data
                 fid = org_obj.search([('fid', '=', line[0])])
-                dept_id = ''
-                if line[3]:
-                    dept_id = org_obj.search([('fid', '=', line[3])])
+                # 获取父部门ID（如果不是根部门）
+                parent_id = False
+                if line[3]:  # 如果有父部门fid
+                    parent_dept = org_obj.search([('fid', '=', line[3])], limit=1)
+                    parent_id = parent_dept.id if parent_dept else False
                 uv = {
                     'fid': line[0],  # 组织唯一标识码  Unique code organization
                     'name': line[1] or False,
                     'fnum': line[2] or False,
-                    'parent_id': dept_id or False,
+                    'parent_id': parent_id,
                     'level': line[4]
                 }
+                if line[2] == '1':
+                    uv['parent_id'] = False
                 if fid:
                     fid.write(uv)
                 else:

@@ -11,7 +11,7 @@
             <xpath expr="//notebook" position="inside">
                 <page string="e-shr Base Info" groups="base.group_erp_manager">
                     <group>
-                        <group name="grp_base">
+                        <group name="grp_base_shr">
                             <field name="fid" readonly="1" groups="base.group_erp_manager"/>
                         </group>
                     </group>

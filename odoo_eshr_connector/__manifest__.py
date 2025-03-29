@@ -29,6 +29,7 @@
         'data/eshr_cron.xml',
         'views/hr_department_views.xml',
         'views/hr_employee_views.xml',
+        'views/hr_position_views.xml',
     ],
     'installable': True,
     'application': True,

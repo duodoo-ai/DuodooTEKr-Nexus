@@ -24,27 +24,12 @@
         <field name="model">hr.department</field>
         <field name="inherit_id" ref="hr.view_department_tree"/>
         <field name="arch" type="xml">
-            <xpath expr="//list/field[@name='name']" position="after">
-                <field name="fnum"/>
+            <xpath expr="//list/field[@name='name']" position="before">
+                <field name="fnum" optional="show"/>
             </xpath>
             <xpath expr="//field[@name='color']" position="after">
-                <field name="fid" groups="base.group_erp_manager"/>
+                <field name="fid" groups="base.group_erp_manager" optional="hide"/>
             </xpath>
         </field>
     </record>
-
-<!--    <record id="inherit_view_department_filter_2025" model="ir.ui.view">-->
-<!--        <field name="name">inherit.hr.department.search</field>-->
-<!--        <field name="model">hr.department</field>-->
-<!--        <field name="inherit_id" ref="hr.view_department_filter"/>-->
-<!--        <field name="arch" type="xml">-->
-<!--            <xpath expr="//search/filter" position="after">-->
-<!--                &lt;!&ndash;Add a tree menu on the left side of the device view&ndash;&gt;-->
-<!--                <searchpanel>-->
-<!--                    <field name="company_id" expand="1" groups="base.group_multi_company" icon="fa-building" enable_counters="1"/>-->
-<!--                    <field name="parent_id" hierarchize="1" select="one" limit="2000" expand="1" icon="fa-users" enable_counters="1"/>-->
-<!--                </searchpanel>-->
-<!--            </xpath>-->
-<!--        </field>-->
-<!--    </record>-->
 </odoo>

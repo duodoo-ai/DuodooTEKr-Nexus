@@ -51,12 +51,17 @@ msgstr "职工编码"
 #: model:ir.model.fields,field_description:odoo_eshr_connector.field_hr_department__fid
 #: model:ir.model.fields,field_description:odoo_eshr_connector.field_hr_employee__fid
 msgid "e-shr FID"
-msgstr "唯一标识"
+msgstr "E-SHR唯一标识"
 
 #. module: odoo_eshr_connector
 #: model:ir.model.fields,field_description:odoo_eshr_connector.field_hr_department__level
 msgid "e-shr Level"
 msgstr "部门层级"
+
+#. module: odoo_eshr_connector
+#: model:ir.model.fields,field_description:odoo_eshr_connector.field_hr_job__fid
+msgid "e-shr Position FID"
+msgstr "职位唯一ID"
 
 #. module: odoo_eshr_connector
 #: model:ir.actions.server,name:odoo_eshr_connector.cron_shr_org_to_odoo_ir_actions_server
