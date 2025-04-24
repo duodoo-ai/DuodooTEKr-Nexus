@@ -100,7 +100,7 @@ class WmsReceiptOrder(models.Model):
                     'XCode': material_record.XCode or False,
                     'XName': material_record.XName or False,
                     'Spec': material_record.Spec or False,
-                    'mnemoniccode': line['F_ZOYO_BaseProperty'] or False,
+                    'mnemoniccode': line['F.ZOYO.BaseProperty'] or False,
                     'Quantity': line['FQTY'] or False,
                     'UnitId': unit_record.id or False,
                     'UnitCode': unit_record.XCode or False,
