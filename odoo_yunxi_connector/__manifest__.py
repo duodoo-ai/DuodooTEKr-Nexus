@@ -23,10 +23,10 @@
     'category': '中国化应用/云玺印管集成业务接口',
     'version': '1.0',
 
-    'depends': ['base','mail','base_core','odoo_yunxi'],
+    'depends': ['base','mail','odoo_base','odoo_yunxi'],
 
     'data': [
-        'data/qstamper_resource_cron.xml',
+        # 'data/qstamper_resource_cron.xml',
         'data/qstamper_resource_data.xml',
         'security/ir.model.access.csv',
         'views/yunxi_token_views.xml',

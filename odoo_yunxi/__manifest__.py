@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "云玺印管集成方案",
+    'name': "Odoo Yunxi API Integration",
 
     'summary': """
         金蝶云星空采购与云玺印管平台审批集成方案
@@ -32,8 +32,6 @@
         'views/qstamper_category_views.xml',
         'views/qstamper_equipment_views.xml',
         'views/qstamper_filetype_views.xml',
-        'views/qstamper_approval_views.xml',
-        'views/qstamper_approval_md_views.xml',
         'views/qstamper_menu_views.xml',
     ],
     'installable': True,

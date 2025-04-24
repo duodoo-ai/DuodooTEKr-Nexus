@@ -4,12 +4,12 @@
 		<!-- 以下为功能模块相关，给每个主菜单设置一个组便于理解 -->
 		<record model="res.groups" id="tone_qstamper_approval_user">
 			<field name="name">云玺印管平台用户</field>
-			<field name="category_id" ref="odoo_base.base_core"/>
+			<field name="category_id" ref="odoo_base.odoo_base"/>
 			<field name="comment">云玺印管平台用户组</field>
 		</record>
 		<record model="res.groups" id="tone_qstamper_approval_manager">
 			<field name="name">云玺印管平台管理</field>
-			<field name="category_id" ref="odoo_base.base_core"/>
+			<field name="category_id" ref="odoo_base.odoo_base"/>
 			<field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
 			<field name="comment">云玺印管平台权限组</field>
 		</record>

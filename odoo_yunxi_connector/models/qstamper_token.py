@@ -14,10 +14,10 @@ current_time = time.strftime('%Y%m%d%H%M%S', time.localtime())
 
 class YunxiToken(models.Model):
     _name = 'yunxi.token'
-    _description = '获取云玺平台接口调用token'
+    _description = '云玺平台接口token调用'
 
     # 请求内容
-    name = fields.Char(string='Auth接口名称', default='获取云玺平台接口调用token', help='API名称')
+    name = fields.Char(string='Auth接口名称', default='云玺平台接口token调用', help='API名称')
     appKey = fields.Char(string='应用标识', default='ZYRGroup', help='必填。应用标识')
     appSecret = fields.Char(string='应用秘钥', default='3PUQ4u5w3AQg38OC', help='应用秘钥')
     tenant = fields.Char(string='租户标识', default='zyrg', help='租户标识')
