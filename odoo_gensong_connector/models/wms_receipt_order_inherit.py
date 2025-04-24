@@ -64,7 +64,7 @@ class WmsReceiptOrder(models.Model):
         unit_obj = self.env['wms.unit.info']
         para = {
             "FormId": "PRD_MO",
-            "FieldKeys": "FBILLNO, FTreeEntity_FSEQ, FTreeEntity_FEntryID, FFORMID, FMATERIALID,  F_ZOYO_MNEMONICCODE, FBASEUNITID, FQTY, FWORKSHOPID, FDATE, FDocumentStatus, FCancelStatus",
+            "FieldKeys": "FBILLNO, FTreeEntity_FSEQ, FTreeEntity_FEntryID, FFORMID, FMATERIALID, FBASEUNITID, FQTY, FWORKSHOPID, FDATE, FDocumentStatus, FCancelStatus",
             "FilterString": "'FBILLNO'=""",
             "OrderString": "FDATE DESC",
             "TopRowCount": 10,
@@ -78,7 +78,7 @@ class WmsReceiptOrder(models.Model):
         response = api_sdk.BillQuery(para)
         try:
             res = json.loads(response)
-            # _logger.info('生产订单查询接口请求返回: {}'.format(res))
+            _logger.info('生产订单查询接口请求返回: {}'.format(res))
         except Exception as e:
             _logger.error('生产订单查询接口请求返回错误: {}'.format(e))
         # print(res)
@@ -100,7 +100,7 @@ class WmsReceiptOrder(models.Model):
                     'XCode': material_record.XCode or False,
                     'XName': material_record.XName or False,
                     'Spec': material_record.Spec or False,
-                    'mnemoniccode': line['F_ZOYO_MNEMONICCODE'] or False,
+                    # 'mnemoniccode': line['F_ZOYO_MNEMONICCODE'] or False,
                     'Quantity': line['FQTY'] or False,
                     'UnitId': unit_record.id or False,
                     'UnitCode': unit_record.XCode or False,
