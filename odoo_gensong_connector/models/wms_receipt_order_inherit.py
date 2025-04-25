@@ -64,7 +64,7 @@ class WmsReceiptOrder(models.Model):
         unit_obj = self.env['wms.unit.info']
         para = {
             "FormId": "PRD_MO",
-            "FieldKeys": "FBILLNO, FTreeEntity_FSEQ, FTreeEntity_FEntryID, FFORMID, FMATERIALID, F_ZOYO_BaseProperty, FBASEUNITID, FQTY, FWORKSHOPID, FDATE, FDocumentStatus, FCancelStatus",
+            "FieldKeys": "FBILLNO, FTreeEntity_FSEQ, FTreeEntity_FEntryID, FFORMID, FMATERIALID, F_ZOYO_BaseProperty, F_ZOYO_BaseProperty9, FBASEUNITID, FQTY, FWORKSHOPID, FDATE, FDocumentStatus, FCancelStatus",
             "FilterString": "'FBILLNO'=""",
             "OrderString": "FDATE DESC",
             "TopRowCount": 10,
@@ -101,6 +101,7 @@ class WmsReceiptOrder(models.Model):
                     'XName': material_record.XName or False,
                     'Spec': material_record.Spec or False,
                     'mnemoniccode': line['F.ZOYO.BaseProperty'] or False,
+                    'properties': line['F.ZOYO.BaseProperty9'] or False,
                     'Quantity': line['FQTY'] or False,
                     'UnitId': unit_record.id or False,
                     'UnitCode': unit_record.XCode or False,
