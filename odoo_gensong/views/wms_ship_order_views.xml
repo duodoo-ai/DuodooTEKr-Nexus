@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_wms_ship_order_tree" model="ir.ui.view">
+        <field name='name'>出库发货申请/出库完成反馈</field>
+        <field name="model">wms.ship.order</field>
+        <field name="arch" type="xml">
+            <list string="出库发货申请/出库完成反馈" editable="top" default_order="TMBillNo desc, Order">
+                <field name="TMBillNo" optional="show"/>
+                <field name="Order" optional="show"/>
+                <field name="FEntryID" optional="show"/>
+                <field name="BillType" optional="show"/>
+                <field name="MaterialId" optional="hide"/>
+                <field name="XCode" optional="show"/>
+                <field name="XName" optional="show"/>
+                <field name="Quantity" optional="show"/>
+                <field name="UnitId" optional="hide"/>
+                <field name="UnitCode" optional="hide"/>
+                <field name="UnitName" optional="show"/>
+                <field name="BatchNo" optional="show"/>
+                <field name="CkStockId" optional="hide"/>
+                <field name="CkCode" optional="show"/>
+                <field name="CkName" optional="show"/>
+                <field name="RkStockId" optional="hide"/>
+                <field name="RkCode" optional="show"/>
+                <field name="RkName" optional="show"/>
+                <field name="ActualQty" optional="show"/>
+                <field name="DocumentStatus" optional="show"/>
+                <field name="CancelStatus" optional="hide"/>
+                <field name="Spec" optional="hide"/>
+                <field name="Area" optional="hide"/>
+                <field name="TaskId" optional="hide"/>
+                <field name="SyncState" optional="show"/>
+                <field name="SyncTime" optional="show"/>
+                <field name="company_id" optional="hide"/>
+            </list>
+        </field>
+    </record>
+
+<!--   <record id="view_wms_ship_order_search" model="ir.ui.view">-->
+<!--        <field name='name'>出库发货申请/出库完成反馈</field>-->
+<!--        <field name="model">wms.ship.order</field>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <search>-->
+<!--                <filter string="今日数据" name="today" domain="[('SyncTime','=', current_date)]"/>-->
+<!--                <filter string="本月数据" name="month" domain="[('SyncTime','&gt;=', time.strftime('%Y-%m-01')),('SyncTime','&lt;',  (context_today() + relativedelta(months=1)).strftime('%Y-%m-01') ) ]"/>-->
+<!--                <filter string="上月数据" name="month2" domain="[('SyncTime','&lt;', time.strftime('%Y-%m-01')),('SyncTime','&gt;=',  (context_today() - relativedelta(months=1)).strftime('%Y-%m-01') ) ]"/>-->
+<!--                <filter string="本年数据" name="year" domain="[('SyncTime','&lt;=', time.strftime('%Y-12-31')),('SyncTime','&gt;=', time.strftime('%Y-01-01'))]"/>-->
+<!--                <separator/>-->
+<!--                <field name="TMBillNo"/>-->
+<!--                <field name="BillType"/>-->
+<!--                <field name="XCode"/>-->
+<!--                <field name="XName"/>-->
+<!--                <field name="BatchNo"/>-->
+<!--                <separator/>-->
+<!--                <group expand="0" string="分组">-->
+<!--                    <filter string="进货单号" name="group_TMBillNo" context="{'group_by':'TMBillNo'}" />-->
+<!--                    <filter string="单据类型" name="group_BillType" context="{'group_by':'BillType'}" />-->
+<!--                    <filter string="物料代码" name="group_XCode" context="{'group_by':'XCode'}" />-->
+<!--                    <filter string="物料名称" name="group_XName" context="{'group_by':'XName'}" />-->
+<!--                    <filter string="批次" name="group_BatchNo" context="{'group_by':'BatchNo'}" />-->
+<!--                </group>-->
+<!--            </search>-->
+<!--        </field>-->
+<!--    </record>-->
+
+    <record id="action_wms_ship_order" model="ir.actions.act_window">
+        <field name="name">出库发货申请/出库完成反馈</field>
+        <field name="res_model">wms.ship.order</field>
+        <field name="view_mode">list</field>
+        <field name="context">{'search_default_month': 1}</field>
+<!--        <field name="search_view_id" ref="view_wms_ship_order_search"/>-->
+        <field name="view_ids"
+               eval="[(5, 0, 0),
+                      (0, 0, {'view_mode': 'list', 'view_id': ref('view_wms_ship_order_tree')}),
+                      ]"/>
+         <field name="help" type="html">
+            <p>
+               出库发货申请/出库完成反馈
+            </p>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data noupdate="0">
+        <menuitem id='root_wms_menu'
+                name='智能仓储'
+                groups="tone_wms_gen_song_user,tone_wms_gen_song_manager"
+                web_icon="odoo_gensong,static/description/icon.png"
+                sequence="10000"/>
+
+        <!-- 二级菜单 -->
+        <menuitem
+                id='action_wms_receipt_order_men'
+                name='入库'
+                action='action_wms_receipt_order'
+                parent='root_wms_menu'
+                sequence='1'/>
+        <menuitem
+                id='action_wms_ship_order_men'
+                name='出库'
+                action='action_wms_ship_order'
+                parent='root_wms_menu'
+                sequence='3'/>
+        <menuitem
+                id='action_wms_material_info_men'
+                name='物料'
+                action='action_wms_material_info'
+                parent='root_wms_menu'
+                sequence='5'/>
+        <menuitem
+                id='action_wms_category_info_men'
+                name='物料类别'
+                action='action_wms_category_info'
+                parent='root_wms_menu'
+                sequence='6'/>
+        <menuitem
+                id='action_wms_stock_info_men'
+                name='仓库'
+                action='action_wms_stock_info'
+                parent='root_wms_menu'
+                sequence='7'/>
+        <menuitem
+                id='action_wms_unit_info_men'
+                name='计量单位'
+                action='action_wms_unit_info'
+                parent='root_wms_menu'
+                sequence='9'/>
+        <menuitem
+                id='action_wms_realtime_inventory_men'
+                name=' 实时库存'
+                action='action_wms_realtime_inventory'
+                parent='root_wms_menu'
+                sequence='17'/>
+    </data>
+</odoo>

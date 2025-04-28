@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+	<data noupdate="0">
+        <menuitem id='root_qstamper_menu'
+                name='云玺授权码'
+                groups="tone_qstamper_approval_user,tone_qstamper_approval_manager"
+                web_icon="odoo_yunxi,static/description/icon.png"
+                sequence="10010"/>
+
+
+        <!-- 将主数据菜单附加到基础档案-主数据模块 -->
+        <menuitem
+                id='action_qstamper_category_men'
+                name='印章类型'
+                action='action_qstamper_category'
+                parent='root_qstamper_menu'
+                sequence='10'/>
+            <menuitem
+                id='action_qstamper_equipment_men'
+                name='印章设备'
+                action='action_qstamper_equipment'
+                parent='root_qstamper_menu'
+                sequence='15'/>
+        <menuitem
+                id='action_qstamper_filetype_men'
+                name='申请文件类型'
+                action='action_qstamper_filetype'
+                parent='root_qstamper_menu'
+                sequence='20'/>
+    </data>
+</odoo>

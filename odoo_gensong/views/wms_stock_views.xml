@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_wms_stock_info_tree" model="ir.ui.view">
+        <field name='name'>仓库信息</field>
+        <field name="model">wms.stock.info</field>
+        <field name="arch" type="xml">
+            <list string="仓库信息" editable="top">
+                <field name="StockId" optional="show"/>
+                <field name="XCode" optional="show"/>
+                <field name="XName" optional="show"/>
+                <field name="Spec" optional="show"/>
+                <field name="DocumentStatus" optional="show"/>
+                <field name="ForbidStatus" optional="show"/>
+                <field name="company_id" optional="hide"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="action_wms_stock_info" model="ir.actions.act_window">
+        <field name="name">仓库信息</field>
+        <field name="res_model">wms.stock.info</field>
+        <field name="view_mode">list</field>
+        <field name="context">{}</field>
+        <field name="search_view_id" ref=""/>
+        <field name="view_ids"
+               eval="[(5, 0, 0),
+                      (0, 0, {'view_mode': 'list', 'view_id': ref('view_wms_stock_info_tree')}),
+                      ]"/>
+         <field name="help" type="html">
+            <p>
+               仓库信息
+            </p>
+        </field>
+    </record>
+</odoo>

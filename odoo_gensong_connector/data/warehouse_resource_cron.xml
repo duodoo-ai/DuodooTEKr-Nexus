@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="0">
+        <!--从ERP取接口数据自动任务-->
+        <!--从ERP取接口数据自动任务-->
+        <!--从ERP取接口数据自动任务-->
+        <record id="cron_wms_material_query" model="ir.cron">
+            <field name="interval_type">minutes</field>
+            <field name="name">【智能仓储】WMS1-基础物料同步（k3Cloud->中间平台）</field>
+            <field name="priority">5</field>
+            <field name="active">True</field>
+            <field name="interval_number">30</field>
+            <field name="model_id" ref="odoo_gensong.model_wms_material_info"/>
+            <field name="state">code</field>
+            <field name="code">model.action_material_BillQuery()</field>
+        </record>
+        <record id="cron_wms_stock_query" model="ir.cron">
+            <field name="interval_type">minutes</field>
+            <field name="name">【智能仓储】WMS2-收料/入库侧单据同步（k3Cloud->中间平台）</field>
+            <field name="priority">5</field>
+            <field name="active">True</field>
+            <field name="interval_number">1</field>
+            <field name="model_id" ref="odoo_gensong.model_wms_receipt_order"/>
+            <field name="state">code</field>
+            <field name="code">model.action_StockIn_BillQuery()</field>
+        </record>
+        <record id="cron_wms_ship_query" model="ir.cron">
+            <field name="interval_type">minutes</field>
+            <field name="name">【智能仓储】WMS3-发料/发货侧单据同步（k3Cloud->中间平台）</field>
+            <field name="priority">5</field>
+            <field name="active">True</field>
+            <field name="interval_number">1</field>
+            <field name="model_id" ref="odoo_gensong.model_wms_ship_order"/>
+            <field name="state">code</field>
+            <field name="code">model.action_StockOut_BillQuery()</field>
+        </record>
+        <record id="cron_wms_realtime_inventory" model="ir.cron">
+            <field name="interval_type">minutes</field>
+            <field name="name">【智能仓储】WMS4-即时库存同步（k3Cloud->中间平台）</field>
+            <field name="priority">5</field>
+            <field name="active">True</field>
+            <field name="interval_number">30</field>
+            <field name="model_id" ref="odoo_gensong.model_wms_realtime_inventory"/>
+            <field name="state">code</field>
+            <field name="code">model.action_realtime_inventory()</field>
+        </record>
+        <!--驱动AGV叉车执行任务自动回写ERP提交审核任务-->
+        <!--驱动AGV叉车执行任务自动回写ERP提交审核任务-->
+        <!--驱动AGV叉车执行任务自动回写ERP提交审核任务-->
+        <record id="cron_wms_stock_receipt_write_back" model="ir.cron">
+            <field name="interval_type">minutes</field>
+            <field name="name">【智能仓储】WMS5-收料/入库侧单据反馈（中间平台->k3Cloud）</field>
+            <field name="priority">5</field>
+            <field name="active">True</field>
+            <field name="interval_number">1</field>
+            <field name="model_id" ref="odoo_gensong.model_wms_receipt_order"/>
+            <field name="state">code</field>
+            <field name="code">model.Action_StockIn_Write_Back()</field>
+        </record>
+        <record id="cron_wms_stock_ship_write_back" model="ir.cron">
+            <field name="interval_type">minutes</field>
+            <field name="name">【智能仓储】WMS6-发料/出库侧单据反馈（中间平台->k3Cloud）</field>
+            <field name="priority">5</field>
+            <field name="active">True</field>
+            <field name="interval_number">1</field>
+            <field name="model_id" ref="odoo_gensong.model_wms_ship_order"/>
+            <field name="state">code</field>
+            <field name="code">model.Action_StockOut_Write_Back()</field>
+        </record>
+
+        <record id="cron_wms_prd_mo_query" model="ir.cron">
+            <field name="interval_type">minutes</field>
+            <field name="name">【智能仓储】WMS7-生产订单侧单据同步（k3Cloud->中间平台）</field>
+            <field name="priority">5</field>
+            <field name="active">True</field>
+            <field name="interval_number">1</field>
+            <field name="model_id" ref="odoo_gensong.model_wms_receipt_order"/>
+            <field name="state">code</field>
+            <field name="code">model.action_Prd_Mo_BillQuery()</field>
+        </record>
+    </data>
+</odoo>
