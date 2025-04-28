@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--商旅指标分析-->
+    <record model="ir.ui.view" id="account_analysis_travel_indicator_tree">
+        <field name="name">商旅指标分析.tree</field>
+        <field name="model">account.analysis.travel.indicator</field>
+        <field name="arch" type="xml">
+            <list string="商旅指标分析" editable="top">
+                <field name="project_ids" optional="show"/>
+                <field name="receipt_date" optional="show"/>
+                <field name="receipt_voucher" optional="show"/>
+                <field name="name" optional="show"/>
+                <field name="company_id" optional="hide"/>
+                <field name="id" optional="hide"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="action_account_analysis_travel_indicator" model="ir.actions.act_window">
+        <field name="name">商旅指标分析</field>
+        <field name="res_model">account.analysis.travel.indicator</field>
+        <field name="view_mode">list</field>
+        <field name="search_view_id" ref=""/>
+        <field name="view_ids"
+           eval="[(5, 0, 0),
+                  (0, 0, {'view_mode': 'list', 'view_id': ref('account_analysis_travel_indicator_tree')}),
+                  ]"/>
+    </record>
+</odoo>

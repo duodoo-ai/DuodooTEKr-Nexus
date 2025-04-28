@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--已勾选发票（建设)-智税云导出（月底比对账面除旅客运输外的进项税）-->
+    <record model="ir.ui.view" id="analysis_supplier_outside_tree">
+        <field name="name">系统外供应商情况分析.tree</field>
+        <field name="model">analysis.supplier.outside</field>
+        <field name="arch" type="xml">
+            <list string="系统外供应商情况分析">
+                <field name="name" optional="show"/>
+                <field name="private_owned" optional="show"/>
+                <field name="receipt_voucher" optional="show"/>
+                <field name="receipt_date" optional="show"/>
+                <field name="receipt_amount" optional="show"/>
+                <field name="payment_voucher" optional="show"/>
+                <field name="payment_date" optional="show"/>
+                <field name="payment_amount" optional="show"/>
+                <field name="contract_completion_period" optional="show"/>
+                <field name="excluding_tax_amount" optional="show"/>
+                <field name="contract_completion_rate" optional="show"/>
+                <field name="ranking_incoming_amount" optional="show"/>
+                <field name="company_id" optional="hide"/>
+                <field name="id" optional="hide"/>
+            </list>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="analysis_supplier_outside_form">
+        <field name="name">系统外供应商情况分析.form</field>
+        <field name="model">analysis.supplier.outside</field>
+        <field name="arch" type="xml">
+            <form string="系统外供应商情况分析">
+                <sheet>
+                    <group name="group_one">
+                        <group>
+                            <field name="name"/>
+                            <field name="private_owned"/>
+                            <field name="receipt_voucher"/>
+                            <field name="receipt_date"/>
+                            <field name="receipt_amount"/>
+                            <field name="payment_voucher"/>
+                            <field name="payment_date"/>
+                            <field name="payment_amount"/>
+                        </group>
+                        <group>
+                            <field name="contract_completion_period"/>
+                            <field name="excluding_tax_amount"/>
+                            <field name="contract_completion_rate"/>
+                            <field name="ranking_incoming_amount"/>
+                        </group>
+                        <field name="company_id" invisible="1"/>
+                        <field name="id" invisible="1"/>
+                    </group>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_analysis_supplier_outside" model="ir.actions.act_window">
+        <field name="name">系统外供应商情况分析</field>
+        <field name="res_model">analysis.supplier.outside</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref=""/>
+        <field name="view_ids"
+           eval="[(5, 0, 0),
+                  (0, 0, {'view_mode': 'list', 'view_id': ref('analysis_supplier_outside_tree')}),
+                  (0, 0, {'view_mode': 'form', 'view_id': ref('analysis_supplier_outside_form')}),
+                  ]"/>
+    </record>
+</odoo>

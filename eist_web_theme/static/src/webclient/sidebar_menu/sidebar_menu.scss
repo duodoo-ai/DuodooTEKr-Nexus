@@ -107,7 +107,7 @@
                             text-shadow: 1px 1px 0 rgba(#000, 0.3);
                         }
 
-                        &.no_submenus {
+                        &.no_submenus,&.no_arrow {
                             background-color:transparent;
                             box-shadow:none;
                             &::after {
@@ -170,7 +170,7 @@
                                         text-shadow: 1px 1px 0 rgba(#000, 0.3);
                                     }
 
-                                    &.no_submenus {
+                                    &.no_submenus,&.no_arrow {
                                         &::after {
                                             display: none;
                                             // background-image: none;

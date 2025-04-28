@@ -2,7 +2,7 @@
 
 {
     "name": "Web Theme",
-    "author": "EIST",
+    "author": "RAIN@EIST",
     "website": "https://eist.com.cn",
     "category": "Base/Theme",
     "version": "18.0.0.1",

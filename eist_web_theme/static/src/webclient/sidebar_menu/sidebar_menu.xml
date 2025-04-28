@@ -37,9 +37,11 @@
                         <t t-set="href" t-value="getMenuItemHref(app)" />
 
                         <t t-if="app.children.length and allowLoadAppSubMenus()">
-                            <a t-attf-class="accordion-button collapsed o_sidebar_menu_accordion_button_app {{app.appID==state.currentAppId ? 'active show':'collapse'}}" type="button" data-bs-toggle="collapse" t-attf-data-bs-target="#menu-collapse-{{app.id}}" t-attf-aria-controls="menu-collapse-{{app.id}}" t-att-href="href" t-attf-id="menu-link-{{app.id}}" t-attf-aria-expanded="{{app.id==currentAppId ? 'true':'false'}}" t-att-data-id="app.id" t-att-data-action="app.actionID" t-att-data-path="app.actionPath" t-att-data-menu="app.id" t-att-data-xmlid="app.xmlid">
-                                <img class="menu-icon" t-attf-src="/{{app.webIcon.split(',')[0]}}/{{app.webIcon.split(',')[1]}}" data-toggle="tooltip" data-placement="right" t-attf-title="{{ app.name}}" t-if="app.webIcon"/>
-                                <img class="menu-icon" src="/base/static/description/icon.png" data-toggle="tooltip" data-placement="right" t-attf-title="{{ app.name}}" t-else=""/>
+                            <a t-attf-class="accordion-button collapsed o_sidebar_menu_accordion_button_app {{app.appID==state.currentAppId ? 'active show':'collapse'}} {{state.theme.sidebar.main_menu.display_arrow ? '':'no_arrow'}}" type="button" data-bs-toggle="collapse" t-attf-data-bs-target="#menu-collapse-{{app.id}}" t-attf-aria-controls="menu-collapse-{{app.id}}" t-att-href="href" t-attf-id="menu-link-{{app.id}}" t-attf-aria-expanded="{{app.id==currentAppId ? 'true':'false'}}" t-att-data-id="app.id" t-att-data-action="app.actionID" t-att-data-path="app.actionPath" t-att-data-menu="app.id" t-att-data-xmlid="app.xmlid">
+                                <t t-if="state.theme.sidebar.main_menu.display_icon">
+                                    <img class="menu-icon" t-attf-src="/{{app.webIcon.split(',')[0]}}/{{app.webIcon.split(',')[1]}}" data-toggle="tooltip" data-placement="right" t-attf-title="{{ app.name}}" t-if="app.webIcon"/>
+                                    <img class="menu-icon" src="/base/static/description/icon.png" data-toggle="tooltip" data-placement="right" t-attf-title="{{ app.name}}" t-else=""/>
+                                </t>
                                 <div class="d-flex justify-content-between align-items-center w-100 o_sidebar_menu_accordion_button_app_lable">
                                     <span class="menu-lable text-truncate">
                                         <t t-esc="app.name"/>
@@ -51,11 +53,13 @@
 
                         <t t-else="">
                             <a class="no_submenus" t-attf-class="accordion-button o_sidebar_menu_accordion_button_app  {{app.currentAppId==state.currentActionID ? 'active':''}}" type="button" data-bs-toggle="collapse" t-attf-data-bs-target="#menu-collapse-{{app.id}}" t-attf-aria-controls="menu-collapse-{{app.id}}" t-att-href="href" t-attf-id="menu-link-{{app.id}}" t-att-data-id="app.id" t-att-data-action="app.actionID" t-att-data-path="app.actionPath" t-att-data-menu="app.id" t-att-data-xmlid="app.xmlid" t-on-click="(ev) => this._openMenu(ev,app)">
-                                <img class="menu-icon" t-attf-src="/{{app.webIcon.split(',')[0]}}/{{app.webIcon.split(',')[1]}}" data-toggle="tooltip" data-placement="right" t-attf-title="{{ app.name}}" t-if="app.webIcon"/>
-                                <img class="menu-icon" src="/base/static/description/icon.png" data-toggle="tooltip" data-placement="right" t-attf-title="{{ app.name}}" t-else=""/>
+                                <t t-if="state.theme.sidebar.main_menu.display_icon">
+                                    <img class="menu-icon" t-attf-src="/{{app.webIcon.split(',')[0]}}/{{app.webIcon.split(',')[1]}}" data-toggle="tooltip" data-placement="right" t-attf-title="{{ app.name}}" t-if="app.webIcon"/>
+                                    <img class="menu-icon" src="/base/static/description/icon.png" data-toggle="tooltip" data-placement="right" t-attf-title="{{ app.name}}" t-else=""/>
+                                </t>
                                 <div class="d-flex justify-content-between align-items-center w-100 o_sidebar_menu_accordion_button_app_lable">
                                     <span class="menu-lable text-truncate">
-                                        <t t-esc=" app.name"/>
+                                        <t t-esc="app.name"/>
                                     </span>
                                 </div>
                             </a>
@@ -146,8 +150,8 @@
         <t t-set="href" t-value="getMenuItemHref(menu)" />
 
         <t t-if="menu.children.length">
-            <a t-attf-class="accordion-button collapsed o_sidebar_menu_accordion_button_menu {{menu.actionID==state.currentActionID ? 'active':''}}" type="button" t-att-href="href" data-bs-toggle="collapse" t-attf-data-bs-target="#menu-collapse-{{menu.id}}" t-attf-aria-controls="menu-collapse-{{menu.id}}" t-attf-id="menu-link-{{menu.id}}" t-att-data-id="menu.id" t-att-data-menu="menu.id" t-att-data-action="menu.actionID" t-att-data-path="menu.actionPath" t-att-data-xmlid="menu.xmlid">
-                <span class="menu-icon">
+            <a t-attf-class="accordion-button collapsed o_sidebar_menu_accordion_button_menu {{menu.actionID==state.currentActionID ? 'active':''}} {{state.theme.sidebar.submenu.display_arrow ? '':'no_arrow'}}" type="button" t-att-href="href" data-bs-toggle="collapse" t-attf-data-bs-target="#menu-collapse-{{menu.id}}" t-attf-aria-controls="menu-collapse-{{menu.id}}" t-attf-id="menu-link-{{menu.id}}" t-att-data-id="menu.id" t-att-data-menu="menu.id" t-att-data-action="menu.actionID" t-att-data-path="menu.actionPath" t-att-data-xmlid="menu.xmlid">
+                <span class="menu-icon" t-if="state.theme.sidebar.submenu.display_icon">
                     <i t-attf-class="#{getMenuItemIcon(level)}" />
                 </span>
                 <span t-if="env.isSmall" class="menu-lable text-truncate" t-esc="menu.name" />
@@ -159,7 +163,7 @@
         </t>
         <t t-else="">
             <a t-attf-class="accordion-button collapsed o_sidebar_menu_accordion_button_menu no_submenus {{menu.actionID==state.currentActionID  ? 'active':''}}" type="button" t-att-href="href" t-attf-id="menu-link-{{menu.id}}" t-att-data-id="menu.id" t-att-data-menu="menu.id" t-att-data-action="menu.actionID" t-att-data-path="menu.actionPath" t-att-data-xmlid="menu.xmlid" t-on-click="(ev) => this._openMenu(ev,menu)">
-                <span class="menu-icon">
+                <span class="menu-icon" t-if="state.theme.sidebar.submenu.display_icon">
                     <i class="fa fa-link" />
                 </span>
                 <span class="menu-lable text-truncate">

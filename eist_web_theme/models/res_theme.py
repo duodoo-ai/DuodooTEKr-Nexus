@@ -19,9 +19,7 @@ class ResTheme(models.Model):
     company_id = fields.Many2one(
         string="Company", comodel_name="res.company", ondelete="cascade", readonly=True
     )
-    user_id = fields.Many2one(
-        string="User", comodel_name="res.users", ondelete="cascade", readonly=True
-    )
+    user_id = fields.Many2one(string="User", comodel_name="res.users", ondelete="cascade", readonly=True)
 
     type = fields.Selection(
         string="Type",
@@ -41,9 +39,7 @@ class ResTheme(models.Model):
     # ------------------------------------------------------------
     # 主题
     # ------------------------------------------------------------
-    disable_theme_customizer = fields.Boolean(
-        string="Disable theme customizer", default=False
-    )
+    disable_theme_customizer = fields.Boolean(string="Disable theme customizer", default=False)
 
     # 1. Main
     # ------------------------------------------------------------
@@ -57,9 +53,7 @@ class ResTheme(models.Model):
         default="1",
         required=True,
     )
-    main_display_drawer_menu_button = fields.Boolean(
-        string="Display drawer menu button", default=True
-    )
+    main_display_drawer_menu_button = fields.Boolean(string="Display drawer menu button", default=True)
     main_open_action_in_tabs = fields.Boolean(
         string="Open action in tabs", default=False
     )  # multiple open page in tab
@@ -93,31 +87,29 @@ class ResTheme(models.Model):
         default=0,
         required=True,
         readonly=False,
-    ) # Red, orange, yellow, green, blue, indigo, purple.
+    )  # Red, orange, yellow, green, blue, indigo, purple.
 
     # 6.Sidebar menu
     # ------------------------------------------------------------
-    sidebar_display_number_of_submenus = fields.Boolean(
-        string="Display Number Of Submenus", default=True
-    )
+    sidebar_display_number_of_submenus = fields.Boolean(string="Display Number Of Submenus", default=False)
     sidebar_show_minimize_button = fields.Boolean(
         string="Show minimize button",
         default=True,
     )
     sidebar_default_minimized = fields.Boolean(string="Default minimize", default=False)
     sidebar_hover_maximize = fields.Boolean("Hover maximize", default=True)
+    sidebar_main_menu_display_icon = fields.Boolean(string="Main menu display icon", default=True)
+    sidebar_main_menu_display_arrow = fields.Boolean(string="Main menu display arrow", default=True)
+    sidebar_submenu_display_icon = fields.Boolean(string="Submenu display icon", default=True)
+    sidebar_submenu_display_arrow = fields.Boolean(string="Submenu display arrow", default=True)
 
     # 8.Views
     # ------------------------------------------------------------
-    display_scroll_top_button = fields.Boolean(
-        string="Display Scroll Top Button", default=True
-    )
+    display_scroll_top_button = fields.Boolean(string="Display Scroll Top Button", default=True)
     # list_herder_fixed = fields.Boolean(string="List Header Fixed", default=False)
     list_rows_limit = fields.Selection(
         string="Number of rows in the list",
         selection=[
-            ("20", "20 rows"),
-            ("40", "40 rows"),
             ("80", "80 rows"),
             ("100", "100 rows"),
             ("120", "120 rows"),
@@ -138,6 +130,24 @@ class ResTheme(models.Model):
         default="1",
         required=True,
         readonly=False,
+    )
+
+    # 9.Footer
+    # ------------------------------------------------------------
+    display_footer = fields.Boolean(
+        string="Display Footer", default=True, help="Show footers only in desktop mode"
+    )
+    display_footer_support = fields.Boolean(
+        string="Display Footer Support", default=True, help="Show support link in footer"
+    )
+    display_footer_copyright = fields.Boolean(
+        string="Display Footer Copyright", default=False, help="Show copyright in footer"
+    )
+    display_footer_doc = fields.Boolean(
+        string="Display Footer Documentation", default=False, help="Show Documentation in footer"
+    )
+    display_footer_version = fields.Boolean(
+        string="Display Footer Version", default=False, help="Show Version in footer"
     )
 
     @api.depends("company_id", "user_id", "type")

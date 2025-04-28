@@ -15,8 +15,6 @@
 
             .o_sidebar_menu_accordion {
                 background-color: adjust-color(nth($o-theme-colors, $size), $lightness: 10%, $saturation: 10%) !important; // 背景颜色
-
-
             }
 
             .o_sidebar_menu_accordion_item {
@@ -38,6 +36,9 @@
             .accordion-item{
                 border: 0 !important;
             }
+        }
+        .o_erp_footer{
+            background-color: adjust-color(nth($o-theme-colors, $size), $lightness: 10%, $saturation: 10%) !important; // 背景颜色
         }
     }
 }

@@ -11,7 +11,7 @@
                 <div id="user_default_rights">
             </block> -->
 
-            
+
 
 
             <div id="msg_eist_web_theme" position="replace" />
@@ -273,6 +273,22 @@
                                     <label for="sidebar_hover_maximize" class="o_light_label" />
                                     <field name="sidebar_hover_maximize" />
                                 </div>
+                                <div class="content-group d-flex justify-content-between">
+                                    <label for="sidebar_main_menu_display_icon" class="o_light_label" />
+                                    <field name="sidebar_main_menu_display_icon" />
+                                </div>
+                                <div class="content-group d-flex justify-content-between">
+                                    <label for="sidebar_main_menu_display_arrow" class="o_light_label" />
+                                    <field name="sidebar_main_menu_display_arrow" />
+                                </div>
+                                <div class="content-group d-flex justify-content-between">
+                                    <label for="sidebar_submenu_display_icon" class="o_light_label" />
+                                    <field name="sidebar_submenu_display_icon" />
+                                </div>
+                                <div class="content-group d-flex justify-content-between">
+                                    <label for="sidebar_submenu_display_arrow" class="o_light_label" />
+                                    <field name="sidebar_submenu_display_arrow" />
+                                </div>
                             </div>
                         </div>
 
@@ -293,6 +309,35 @@
                                 <div class="content-group d-flex justify-content-between">
                                     <label for="form_chatter_position" class="o_light_label" />
                                     <field name="form_chatter_position" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-lg-6 o_setting_box"
+                            invisible="not disable_theme_customizer">
+                            <div class="o_setting_left_pane">
+                                <i class="bi bi-window-desktop" role="img" aria-label="Views" title="Views"></i>
+                            </div>
+                            <div class="o_setting_right_pane">
+                                <div class="content-group d-flex justify-content-between">
+                                    <label for="display_footer" class="o_light_label" />
+                                    <field name="display_footer" />
+                                </div>
+                                <div class="content-group d-flex justify-content-between">
+                                    <label for="display_footer_support" class="o_light_label" />
+                                    <field name="display_footer_support" />
+                                </div>
+                                <div class="content-group d-flex justify-content-between">
+                                    <label for="display_footer_copyright" class="o_light_label" />
+                                    <field name="display_footer_copyright" />
+                                </div>
+                                <div class="content-group d-flex justify-content-between">
+                                    <label for="display_footer_doc" class="o_light_label" />
+                                    <field name="display_footer_doc" />
+                                </div>
+                                <div class="content-group d-flex justify-content-between">
+                                    <label for="display_footer_version" class="o_light_label" />
+                                    <field name="display_footer_version" />
                                 </div>
                             </div>
                         </div>

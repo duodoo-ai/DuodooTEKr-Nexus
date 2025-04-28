@@ -85,6 +85,19 @@ class ResCompany(models.Model):
     sidebar_hover_maximize = fields.Boolean(
         related="theme_id.sidebar_hover_maximize", readonly=False
     )
+    sidebar_main_menu_display_icon = fields.Boolean(
+        related="theme_id.sidebar_main_menu_display_icon", readonly=False
+    )
+    sidebar_main_menu_display_arrow = fields.Boolean(
+        related="theme_id.sidebar_main_menu_display_arrow", readonly=False
+    )
+    sidebar_submenu_display_icon = fields.Boolean(
+        related="theme_id.sidebar_submenu_display_icon", readonly=False
+    )
+    sidebar_submenu_display_arrow = fields.Boolean(
+        related="theme_id.sidebar_submenu_display_arrow", readonly=False
+    )
+
 
     # 8.Views
     # ------------------------------------------------------------
@@ -99,6 +112,24 @@ class ResCompany(models.Model):
     )
     form_chatter_position = fields.Selection(
         related="theme_id.form_chatter_position", readonly=False
+    )
+
+    # 9.Footer
+    # ------------------------------------------------------------
+    display_footer = fields.Boolean(
+        related="theme_id.display_footer", readonly=False
+    )
+    display_footer_support = fields.Boolean(
+        related="theme_id.display_footer_support", readonly=False
+    )
+    display_footer_copyright = fields.Boolean(
+        related="theme_id.display_footer_copyright", readonly=False
+    )
+    display_footer_doc = fields.Boolean(
+        related="theme_id.display_footer_doc", readonly=False
+    )
+    display_footer_version = fields.Boolean(
+        related="theme_id.display_footer_version", readonly=False
     )
 
     # ------------------------------------------------------------

@@ -79,6 +79,19 @@ class ResConfigSettings(models.TransientModel):
     sidebar_hover_maximize = fields.Boolean(
         related="company_id.sidebar_hover_maximize", readonly=False
     )
+    sidebar_main_menu_display_icon = fields.Boolean(
+        related="company_id.sidebar_main_menu_display_icon", readonly=False
+    )
+    sidebar_main_menu_display_arrow = fields.Boolean(
+        related="company_id.sidebar_main_menu_display_arrow", readonly=False
+    )
+    sidebar_submenu_display_icon = fields.Boolean(
+        related="company_id.sidebar_submenu_display_icon", readonly=False
+    )
+    sidebar_submenu_display_arrow = fields.Boolean(
+        related="company_id.sidebar_submenu_display_arrow", readonly=False
+    )
+
 
     # 8.Views
     # ------------------------------------------------------------
@@ -94,6 +107,25 @@ class ResConfigSettings(models.TransientModel):
     form_chatter_position = fields.Selection(
         related="company_id.form_chatter_position", readonly=False
     )
+
+    # 9.Footer
+    # ------------------------------------------------------------
+    display_footer = fields.Boolean(
+        related="company_id.display_footer", readonly=False
+    )
+    display_footer_support = fields.Boolean(
+        related="company_id.display_footer_support", readonly=False
+    )
+    display_footer_copyright = fields.Boolean(
+        related="company_id.display_footer_copyright", readonly=False
+    )
+    display_footer_doc = fields.Boolean(
+        related="company_id.display_footer_doc", readonly=False
+    )
+    display_footer_version = fields.Boolean(
+        related="company_id.display_footer_version", readonly=False
+    )
+
 
     # ------------------------------------------------------------
     # 登录页面设置

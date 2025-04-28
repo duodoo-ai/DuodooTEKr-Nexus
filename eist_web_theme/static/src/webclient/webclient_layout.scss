@@ -18,6 +18,7 @@
 			.o_sidebar_menu {
 				display: none !important;
 			}
+
 			.o_action_manager,
 			.o_navbar {
 				margin-left: 0 !important;
@@ -31,6 +32,7 @@
 			.o_sidebar_menu {
 				display: none !important;
 			}
+
 			.o_action_manager,
 			.o_navbar {
 				margin-left: 0 !important;
@@ -44,6 +46,7 @@
 			.o_sidebar_menu {
 				display: none !important;
 			}
+
 			.o_action_manager,
 			.o_navbar {
 				margin-left: 0 !important;
@@ -51,42 +54,110 @@
 		}
 
 		// ----------------------------
-		// 侧边栏菜单
+		// 非全屏模式下的 侧边栏菜单
 		// ----------------------------
-		&[data-app-load-method="1"] {
-			&[data-sidebar-default-minimize="true"] {
-				> .o_action_manager,
-				.o_navbar {
-					margin-left: $o-sidebar-menu-collapse-width;
-				}
+		&[data-fullscreen="false"] {
+			&[data-app-load-method="1"] {
+				&[data-sidebar-default-minimize="true"] {
 
-				&[data-sidebar-is-minimized="true"] {
-					> .o_action_manager,
+					>.o_action_manager,
 					.o_navbar {
 						margin-left: $o-sidebar-menu-collapse-width;
 					}
+
+					&[data-sidebar-is-minimized="true"] {
+
+						>.o_action_manager,
+						.o_navbar {
+							margin-left: $o-sidebar-menu-collapse-width;
+						}
+					}
+
+					&[data-sidebar-is-minimized="false"] {
+
+						>.o_action_manager,
+						.o_navbar {
+							margin-left: $o-sidebar-menu-width;
+						}
+					}
 				}
 
-				&[data-sidebar-is-minimized="false"] {
-					> .o_action_manager,
+				&[data-sidebar-default-minimize="false"] {
+
+					>.o_action_manager,
 					.o_navbar {
+						margin-left: $o-sidebar-menu-width;
+					}
+
+					&[data-sidebar-is-minimized="true"] {
+
+						>.o_action_manager,
+						.o_navbar {
+							margin-left: $o-sidebar-menu-collapse-width;
+						}
+					}
+				}
+
+				// ----------------------------
+				// 非全屏模式下
+				// 显示侧边栏菜单
+				// 页脚样式
+				// ----------------------------
+				&[data-display-footer="true"] {
+					.o_action_manager {
+						bottom: $o-erp-footer-height !important;
+					}
+
+					.o_erp_footer {
+						height: $o-erp-footer-height !important;
 						margin-left: $o-sidebar-menu-width;
 					}
 				}
 			}
 
-			&[data-sidebar-default-minimize="false"] {
-				> .o_action_manager,
-				.o_navbar {
-					margin-left: $o-sidebar-menu-width;
-				}
-				&[data-sidebar-is-minimized="true"] {
-					> .o_action_manager,
-					.o_navbar {
-						margin-left: $o-sidebar-menu-collapse-width;
+
+			&[data-app-load-method="0"] {
+
+				// ----------------------------
+				// 非全屏模式下
+				// 不显示侧边栏菜单
+				// 页脚样式
+				// ----------------------------
+				&[data-display-footer="true"] {
+					.o_action_manager {
+						bottom: $o-erp-footer-height !important;
+					}
+
+					.o_erp_footer {
+						display: block;
+						height: $o-erp-footer-height !important;
+						margin-left: 0;
 					}
 				}
 			}
 		}
+
+		// ----------------------------
+		// 全屏模式下的 相关元素
+		// ----------------------------
+		&[data-fullscreen="true"] {
+			.o_navbar {
+				display: none !important;
+			}
+
+			.o_sidebar_menu {
+				display: none !important;
+			}
+
+			.o_action_manager {
+				bottom: 0 !important;
+			}
+
+			.o_erp_footer {
+				display: none !important;
+			}
+		}
+
+
 	}
 }

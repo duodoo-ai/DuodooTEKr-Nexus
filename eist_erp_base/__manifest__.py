@@ -5,7 +5,7 @@
     "sequence": -1,
     "summary": "EIST ERP",
     "website": "https://eist.com.cn",
-    "author": "EIST",
+    "author": "RAIN@EIST",
     "category": "Base/Core",
     "version": "18.0.0.1",
     "description": """""",
@@ -27,6 +27,7 @@
     "assets": {
         "web.assets_backend": [
             "eist_erp_base/static/libs/bootstrap-icons/font/bootstrap-icons.min.css",
+            "eist_erp_base/static/src/views/**/*",
             "eist_erp_base/static/src/webclient/**/*",
             # "https://pyscript.net/latest/pyscript.css",
             # "https://pyscript.net/latest/pyscript.js",

@@ -33,7 +33,7 @@ class Http(models.AbstractModel):
         # -------------------------------------------------------
         system_name = ICP.get_param("eist_erp.system_name", default="EIST ERP")
         display_company_name = ICP.get_param("eist_erp.display_company_name", default=False)
-        
+
         if type(display_company_name) == str:
             display_company_name = bool(ast.literal_eval(display_company_name))
 
@@ -80,6 +80,7 @@ class Http(models.AbstractModel):
         documentation_url = current_user_company.doc_url
         enable_support = current_user_company.enable_support
         support_url = current_user_company.support_url
+
 
         session_info["user_menu_items"].update(
             {
@@ -169,6 +170,8 @@ class Http(models.AbstractModel):
             row = {"value": int(key), "name": value}
             views_list_rows_limit_list.append(row)
 
+
+
         theme = {}
         theme_id = current_user.theme_id
         if disable_theme_customizer:
@@ -201,6 +204,14 @@ class Http(models.AbstractModel):
                 "show_minimize_button": theme_id.sidebar_show_minimize_button,
                 "default_minimized": theme_id.sidebar_default_minimized,
                 "hover_maximize": theme_id.sidebar_hover_maximize,
+                "main_menu": {
+                    "display_icon": theme_id.sidebar_main_menu_display_icon,
+                    "display_arrow": theme_id.sidebar_main_menu_display_arrow,
+                },
+                "submenu": {
+                    "display_icon": theme_id.sidebar_submenu_display_icon,
+                    "display_arrow": theme_id.sidebar_submenu_display_arrow,
+                },
             },
             # 6.Views
             "views": {
@@ -218,6 +229,17 @@ class Http(models.AbstractModel):
                         "positions": views_form_chatter_position_list,
                     }
                 },
+            },
+            # 9.Footer
+            "footer": {
+                "display": theme_id.display_footer,
+                "display_support": theme_id.display_footer_support,
+                "support_url": current_user_company.support_url,
+                "display_copyright": theme_id.display_footer_copyright,
+                "copyright": current_user_company.copyright,
+                "display_doc": theme_id.display_footer_doc,
+                "doc_url": current_user_company.doc_url,
+                "display_version": theme_id.display_footer_version,
             },
         }
         session_info.update({"theme": json.loads(json.dumps(theme))})

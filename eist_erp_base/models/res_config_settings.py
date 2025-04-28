@@ -31,6 +31,7 @@ class ResConfigSettings(models.TransientModel):
 
     # 扩展功能
     module_esit_geolocalize = fields.Boolean(string="Partners Geolocation", default=False)
+    module_eist_multi_platform= fields.Boolean(string="Multi platform access", default=False)
 
 
     @api.onchange("hide_enterprise_app")

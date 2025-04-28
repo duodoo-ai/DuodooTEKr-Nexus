@@ -19,8 +19,13 @@
 <!--t-name="eist_web_theme.WebClient" extension -->
     <t  t-inherit="web.WebClient"  t-inherit-mode="extension">
         <xpath expr="//NavBar" position="before" >
-            <t t-if="state.theme.main.app_load_method.default==='1' ">
+            <t t-if="state.theme.main.app_load_method.default==='1' and !state.fullscreen">
                 <EistErpSidebarMenu/>
+            </t>
+        </xpath>
+        <xpath expr="//ActionContainer" position="after" >
+            <t t-if="state.theme.footer.display and !env.isSmall">
+                <EistErpFooter/>
             </t>
         </xpath>
     </t>

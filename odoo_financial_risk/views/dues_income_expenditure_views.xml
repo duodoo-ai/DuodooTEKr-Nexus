@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_dues_income_expenditure_form" model="ir.ui.view">
+        <field name="name">dues.income.expenditure.form</field>
+        <field name="model">dues.income.expenditure</field>
+        <field name="arch" type="xml">
+            <form string="党费收支主表">
+                <header>
+                    <!-- 添加批量选择按钮 -->
+                    <button name="open_project_wizard"
+                            type="object"
+                            string="批量添加项目"
+                            class="oe_highlight"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="statistical_date"/>
+                            <field name="company_id"/>
+                        </group>
+                        <group>
+                            <field name="total_subtotal"/>
+                            <field name="total_current_amount"/>
+                            <field name="total_next_amount"/>
+                        </group>
+                    </group>
+                    <!-- 添加明细行列表 -->
+                    <field name="line_ids">
+                        <list editable="bottom" create="0">
+                            <field name="project_ids"
+                                   widget="many2many_tags"
+                                   string="关联项目"
+                                   options="{'no_create': True}"/>
+                            <field name="type" invisible="1"/>
+                            <field name="subtotal"/>
+                            <field name="current_level_amount"/>
+                            <field name="next_level_amount"/>
+                        </list>
+                    </field>
+                </sheet>
+                <chatter/>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_dues_income_expenditure_tree">
+        <field name="name">党费收支主表.tree</field>
+        <field name="model">dues.income.expenditure</field>
+        <field name="arch" type="xml">
+            <list string="党费收支主表">
+                <field name="name" optional="show"/>
+                <field name="statistical_date" optional="show"/>
+                <field name="total_subtotal" optional="show"/>
+                <field name="total_current_amount" optional="show"/>
+                <field name="total_next_amount" optional="show"/>
+                <field name="company_id" optional="hide"/>
+                <field name="id" optional="hide"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="action_view_dues_income_expenditure" model="ir.actions.act_window">
+        <field name="name">党费收支主表</field>
+        <field name="res_model">dues.income.expenditure</field>
+        <field name="view_mode">list,form</field>
+        <field name="search_view_id" ref=""/>
+        <field name="view_ids"
+           eval="[(5, 0, 0),
+                  (0, 0, {'view_mode': 'list', 'view_id': ref('view_dues_income_expenditure_tree')}),
+                  (0, 0, {'view_mode': 'form', 'view_id': ref('view_dues_income_expenditure_form')}),
+                  ]"/>
+    </record>
+</odoo>

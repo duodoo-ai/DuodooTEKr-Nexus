@@ -7,6 +7,7 @@ import { router, routerBus } from "@web/core/browser/router";
 import { session } from "@web/session";
 import { EistErpNavBar } from "./navbar/navbar";
 import { EistErpSidebarMenu } from "./sidebar_menu/sidebar_menu";
+import { EistErpFooter } from "./footer/footer";
 
 import { Component, onMounted, onPatched, onWillStart, useExternalListener, useState } from "@odoo/owl";
 import { browser } from "@web/core/browser/browser";
@@ -16,6 +17,7 @@ export class WebClientEistErp extends WebClient {
 		...WebClient.components,
 		NavBar: EistErpNavBar,
 		EistErpSidebarMenu,
+		EistErpFooter,
 	};
 	// static template = "eist_web_theme.WebClient";
 
@@ -36,6 +38,8 @@ export class WebClientEistErp extends WebClient {
 			hasDrawerMenu: this.dm.hasDrawerMenu,
 		});
 
+
+
 		// console.log("WebClientEistErp setup state",this.state.theme.main.app_load_method);
 
 		// 设置品牌
@@ -44,7 +48,7 @@ export class WebClientEistErp extends WebClient {
 		const display_company_name = session.brand.display_company_name;
 		if (display_company_name) {
 			let allowed_companies = session.user_companies.allowed_companies; // 允许访问的公司
-			let current_company_id = session.user_companies.current_company; // 当前公司ID
+			let current_company_id = session.user_companies.current_company; // 当前公司 ID
 			current_company_name = getCurrentCompanyName(); //当前公司名称
 			function getCurrentCompanyName() {
 				for (var key in allowed_companies) {
@@ -94,6 +98,11 @@ export class WebClientEistErp extends WebClient {
 		// this.el.setAttribute('data-display-sidebar', this.state.theme.main.display_sidebar);// 是否显示侧边栏
 
 		this.el.setAttribute(
+			"data-fullscreen",
+			this.state.fullscreen
+		); // 是否全屏
+
+		this.el.setAttribute(
 			"data-sidebar-default-minimize",
 			this.state.theme.sidebar.default_minimized
 		); // 侧边栏默认是否最小化
@@ -109,6 +118,12 @@ export class WebClientEistErp extends WebClient {
 			"data-sidebar-hover-maximize",
 			this.state.theme.sidebar.hover_maximize
 		); // 鼠标悬停是否最大化
+
+		// 页脚
+		this.el.setAttribute(
+			"data-display-footer",
+			this.state.theme.footer.display && !this.env.isSmall
+		); // 是否显示页脚
 	}
 
 	_loadDefaultApp() {

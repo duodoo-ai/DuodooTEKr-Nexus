@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Odoo Server 18.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-11 08:57+0000\n"
-"PO-Revision-Date: 2025-03-11 17:00+0800\n"
+"POT-Creation-Date: 2025-04-18 01:29+0000\n"
+"PO-Revision-Date: 2025-04-18 09:29+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: zh_CN\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.5\n"
+"X-Generator: Poedit 3.6\n"
 
 #. module: eist_web_theme
 #: model_terms:ir.ui.view,arch_db:eist_web_theme.res_config_settings_view_form
@@ -76,6 +76,11 @@ msgstr ""
 msgid ""
 "<i class=\"bi bi-palette\" role=\"img\" aria-label=\"Theme color\" title=\"Theme color\"/>"
 msgstr "<i class=\"bi bi-palette\" role=\"img\" aria-label=\"主题颜色\" title=\"主题颜色\"/>"
+
+#. module: eist_web_theme
+#: model_terms:ir.ui.view,arch_db:eist_web_theme.res_config_settings_view_form
+msgid "<i class=\"bi bi-window-desktop\" role=\"img\" aria-label=\"Views\" title=\"Views\"/>"
+msgstr "<i class=\"bi bi-window-desktop\" role=\"img\" aria-label=\"视图\" title=\"视图\"/>"
 
 #. module: eist_web_theme
 #: model_terms:ir.ui.view,arch_db:eist_web_theme.res_config_settings_view_form
@@ -165,19 +170,22 @@ msgstr "登录页面上的技术支持链接。"
 
 #. module: eist_web_theme
 #. odoo-javascript
-#: code:addons/eist_web_theme/static/src/webclient/settings_form_view/widgets/navigation.xml:0
+#: code:addons/eist_web_theme/static/src/webclient/settings_form_view/widgets/eist_config_navigation/eist_config_navigation.xml:0
+#: code:addons/rhino-data-pipe/eist_web_theme/static/src/webclient/settings_form_view/widgets/eist_config_navigation/eist_config_navigation.xml:0
 msgid "About"
 msgstr "关于"
 
 #. module: eist_web_theme
 #. odoo-javascript
 #: code:addons/eist_web_theme/static/src/webclient/systray_items/user_menu/user_menu_items.js:0
+#: code:addons/rhino-data-pipe/eist_web_theme/static/src/webclient/systray_items/user_menu/user_menu_items.js:0
 msgid "Activate the developer mode"
 msgstr "激活开发者模式"
 
 #. module: eist_web_theme
 #. odoo-javascript
 #: code:addons/eist_web_theme/static/src/webclient/systray_items/user_menu/user_menu_items.js:0
+#: code:addons/rhino-data-pipe/eist_web_theme/static/src/webclient/systray_items/user_menu/user_menu_items.js:0
 msgid "Activate the developer mode (with assets)"
 msgstr "激活开发者模式(使用资产)"
 
@@ -191,6 +199,7 @@ msgstr "出现在浏览器窗口的标题栏或收藏夹中的图标。"
 #. module: eist_web_theme
 #. odoo-javascript
 #: code:addons/eist_web_theme/static/src/webclient/systray_items/theme_menu/theme_panel.xml:0
+#: code:addons/rhino-data-pipe/eist_web_theme/static/src/webclient/systray_items/theme_menu/theme_panel.xml:0
 #: model:ir.model.fields,field_description:eist_web_theme.field_res_company__main_app_load_method
 #: model:ir.model.fields,field_description:eist_web_theme.field_res_config_settings__main_app_load_method
 #: model:ir.model.fields,field_description:eist_web_theme.field_res_theme__main_app_load_method
@@ -199,13 +208,15 @@ msgstr "应用加载方式"
 
 #. module: eist_web_theme
 #. odoo-javascript
-#: code:addons/eist_web_theme/static/src/webclient/settings_form_view/widgets/navigation.xml:0
+#: code:addons/eist_web_theme/static/src/webclient/settings_form_view/widgets/eist_config_navigation/eist_config_navigation.xml:0
+#: code:addons/rhino-data-pipe/eist_web_theme/static/src/webclient/settings_form_view/widgets/eist_config_navigation/eist_config_navigation.xml:0
 msgid "Applications"
 msgstr "应用"
 
 #. module: eist_web_theme
 #. odoo-javascript
 #: code:addons/eist_web_theme/static/src/views/kanban/kanban_header_patch.js:0
+#: code:addons/rhino-data-pipe/eist_web_theme/static/src/views/kanban/kanban_header_patch.js:0
 msgid "Automations"
 msgstr "自动化"
 
@@ -216,7 +227,8 @@ msgstr "基础设置"
 
 #. module: eist_web_theme
 #. odoo-javascript
-#: code:addons/eist_web_theme/static/src/webclient/settings_form_view/widgets/navigation.xml:0
+#: code:addons/eist_web_theme/static/src/webclient/settings_form_view/widgets/eist_config_navigation/eist_config_navigation.xml:0
+#: code:addons/rhino-data-pipe/eist_web_theme/static/src/webclient/settings_form_view/widgets/eist_config_navigation/eist_config_navigation.xml:0
 msgid "Base settings"
 msgstr "基础设置"
 
@@ -225,6 +237,8 @@ msgstr "基础设置"
 #. odoo-python
 #: code:addons/eist_web_theme/models/ir_http.py:0
 #: code:addons/eist_web_theme/static/src/core/theme_colorlist/theme_colorlist.js:0
+#: code:addons/rhino-data-pipe/eist_web_theme/models/ir_http.py:0
+#: code:addons/rhino-data-pipe/eist_web_theme/static/src/core/theme_colorlist/theme_colorlist.js:0
 msgid "Blue"
 msgstr "蓝色"
 
@@ -236,18 +250,21 @@ msgstr "表单底部"
 #. module: eist_web_theme
 #. odoo-javascript
 #: code:addons/eist_web_theme/static/src/webclient/systray_items/user_menu/user_menu_items.js:0
+#: code:addons/rhino-data-pipe/eist_web_theme/static/src/webclient/systray_items/user_menu/user_menu_items.js:0
 msgid "Care Model"
 msgstr "关爱模式"
 
 #. module: eist_web_theme
 #. odoo-javascript
 #: code:addons/eist_web_theme/static/src/webclient/systray_items/theme_menu/theme_panel.xml:0
+#: code:addons/rhino-data-pipe/eist_web_theme/static/src/webclient/systray_items/theme_menu/theme_panel.xml:0
 msgid "Close"
 msgstr "关闭"
 
 #. module: eist_web_theme
 #. odoo-javascript
 #: code:addons/eist_web_theme/static/src/webclient/share_url/burger_menu.xml:0
+#: code:addons/rhino-data-pipe/eist_web_theme/static/src/webclient/share_url/burger_menu.xml:0
 msgid "Close menu"
 msgstr "关闭菜单"
 
@@ -331,24 +348,29 @@ msgstr "自定义技术支持"
 #. odoo-javascript
 #: code:addons/eist_web_theme/static/src/webclient/color_scheme/color_scheme_menu_items.js:0
 #: code:addons/eist_web_theme/static/src/webclient/systray_items/user_menu/user_menu.js:0
+#: code:addons/rhino-data-pipe/eist_web_theme/static/src/webclient/color_scheme/color_scheme_menu_items.js:0
+#: code:addons/rhino-data-pipe/eist_web_theme/static/src/webclient/systray_items/user_menu/user_menu.js:0
 msgid "Dark Mode"
 msgstr "暗黑模式"
 
 #. module: eist_web_theme
 #. odoo-javascript
 #: code:addons/eist_web_theme/static/src/webclient/settings_form_view/res_config_edition.xml:0
+#: code:addons/rhino-data-pipe/eist_web_theme/static/src/webclient/settings_form_view/res_config_edition.xml:0
 msgid "Database expiration:"
 msgstr "数据库到期："
 
 #. module: eist_web_theme
 #. odoo-javascript
 #: code:addons/eist_web_theme/static/src/webclient/systray_items/user_menu/user_menu_items.js:0
+#: code:addons/rhino-data-pipe/eist_web_theme/static/src/webclient/systray_items/user_menu/user_menu_items.js:0
 msgid "Deactivate the developer mode"
 msgstr "停用开发者模式"
 
 #. module: eist_web_theme
 #. odoo-javascript
 #: code:addons/eist_web_theme/static/src/webclient/systray_items/theme_menu/theme_panel.xml:0
+#: code:addons/rhino-data-pipe/eist_web_theme/static/src/webclient/systray_items/theme_menu/theme_panel.xml:0
 #: model:ir.model.fields,field_description:eist_web_theme.field_res_company__sidebar_default_minimized
 #: model:ir.model.fields,field_description:eist_web_theme.field_res_config_settings__sidebar_default_minimized
 #: model:ir.model.fields,field_description:eist_web_theme.field_res_theme__sidebar_default_minimized
@@ -368,6 +390,41 @@ msgid "Display Company Name"
 msgstr "显示公司名称"
 
 #. module: eist_web_theme
+#: model:ir.model.fields,field_description:eist_web_theme.field_res_company__display_footer
+#: model:ir.model.fields,field_description:eist_web_theme.field_res_config_settings__display_footer
+#: model:ir.model.fields,field_description:eist_web_theme.field_res_theme__display_footer
+msgid "Display Footer"
+msgstr "显示页脚"
+
+#. module: eist_web_theme
+#: model:ir.model.fields,field_description:eist_web_theme.field_res_company__display_footer_copyright
+#: model:ir.model.fields,field_description:eist_web_theme.field_res_config_settings__display_footer_copyright
+#: model:ir.model.fields,field_description:eist_web_theme.field_res_theme__display_footer_copyright
+msgid "Display Footer Copyright"
+msgstr "显示页脚版权"
+
+#. module: eist_web_theme
+#: model:ir.model.fields,field_description:eist_web_theme.field_res_company__display_footer_doc
+#: model:ir.model.fields,field_description:eist_web_theme.field_res_config_settings__display_footer_doc
+#: model:ir.model.fields,field_description:eist_web_theme.field_res_theme__display_footer_doc
+msgid "Display Footer Documentation"
+msgstr "显示页脚文档"
+
+#. module: eist_web_theme
+#: model:ir.model.fields,field_description:eist_web_theme.field_res_company__display_footer_support
+#: model:ir.model.fields,field_description:eist_web_theme.field_res_config_settings__display_footer_support
+#: model:ir.model.fields,field_description:eist_web_theme.field_res_theme__display_footer_support
+msgid "Display Footer Support"
+msgstr "显示页脚技术支持"
+
+#. module: eist_web_theme
+#: model:ir.model.fields,field_description:eist_web_theme.field_res_company__display_footer_version
+#: model:ir.model.fields,field_description:eist_web_theme.field_res_config_settings__display_footer_version
+#: model:ir.model.fields,field_description:eist_web_theme.field_res_theme__display_footer_version
+msgid "Display Footer Version"
+msgstr "显示页脚版本"
+
+#. module: eist_web_theme
 #: model:ir.model.fields,field_description:eist_web_theme.field_res_theme__display_name
 #: model:ir.model.fields,field_description:eist_web_theme.field_res_user_menuitems__display_name
 msgid "Display Name"
@@ -376,6 +433,7 @@ msgstr "显示名称"
 #. module: eist_web_theme
 #. odoo-javascript
 #: code:addons/eist_web_theme/static/src/webclient/systray_items/theme_menu/theme_panel.xml:0
+#: code:addons/rhino-data-pipe/eist_web_theme/static/src/webclient/systray_items/theme_menu/theme_panel.xml:0
 #: model:ir.model.fields,field_description:eist_web_theme.field_res_company__sidebar_display_number_of_submenus
 #: model:ir.model.fields,field_description:eist_web_theme.field_res_config_settings__sidebar_display_number_of_submenus
 #: model:ir.model.fields,field_description:eist_web_theme.field_res_theme__sidebar_display_number_of_submenus
@@ -392,11 +450,61 @@ msgstr "显示滚动顶部按钮"
 #. module: eist_web_theme
 #. odoo-javascript
 #: code:addons/eist_web_theme/static/src/webclient/systray_items/theme_menu/theme_panel.xml:0
+#: code:addons/rhino-data-pipe/eist_web_theme/static/src/webclient/systray_items/theme_menu/theme_panel.xml:0
+msgid "Display arrow"
+msgstr "显示箭头"
+
+#. module: eist_web_theme
+#. odoo-javascript
+#: code:addons/eist_web_theme/static/src/webclient/systray_items/theme_menu/theme_panel.xml:0
+#: code:addons/rhino-data-pipe/eist_web_theme/static/src/webclient/systray_items/theme_menu/theme_panel.xml:0
 #: model:ir.model.fields,field_description:eist_web_theme.field_res_company__main_display_drawer_menu_button
 #: model:ir.model.fields,field_description:eist_web_theme.field_res_config_settings__main_display_drawer_menu_button
 #: model:ir.model.fields,field_description:eist_web_theme.field_res_theme__main_display_drawer_menu_button
 msgid "Display drawer menu button"
 msgstr "显示抽屉菜单按钮"
+
+#. module: eist_web_theme
+#. odoo-javascript
+#: code:addons/eist_web_theme/static/src/webclient/systray_items/theme_menu/theme_panel.xml:0
+#: code:addons/rhino-data-pipe/eist_web_theme/static/src/webclient/systray_items/theme_menu/theme_panel.xml:0
+msgid "Display icon"
+msgstr "显示图标"
+
+#. module: eist_web_theme
+#. odoo-javascript
+#: code:addons/eist_web_theme/static/src/webclient/systray_items/theme_menu/theme_panel.xml:0
+#: code:addons/rhino-data-pipe/eist_web_theme/static/src/webclient/systray_items/theme_menu/theme_panel.xml:0
+msgid "Display the footer"
+msgstr "显示页脚"
+
+#. module: eist_web_theme
+#. odoo-javascript
+#: code:addons/eist_web_theme/static/src/webclient/systray_items/theme_menu/theme_panel.xml:0
+#: code:addons/rhino-data-pipe/eist_web_theme/static/src/webclient/systray_items/theme_menu/theme_panel.xml:0
+msgid "Display the footer Version"
+msgstr "显示页脚版本"
+
+#. module: eist_web_theme
+#. odoo-javascript
+#: code:addons/eist_web_theme/static/src/webclient/systray_items/theme_menu/theme_panel.xml:0
+#: code:addons/rhino-data-pipe/eist_web_theme/static/src/webclient/systray_items/theme_menu/theme_panel.xml:0
+msgid "Display the footer copyright"
+msgstr "显示页脚版权"
+
+#. module: eist_web_theme
+#. odoo-javascript
+#: code:addons/eist_web_theme/static/src/webclient/systray_items/theme_menu/theme_panel.xml:0
+#: code:addons/rhino-data-pipe/eist_web_theme/static/src/webclient/systray_items/theme_menu/theme_panel.xml:0
+msgid "Display the footer documentation"
+msgstr "显示页脚文档"
+
+#. module: eist_web_theme
+#. odoo-javascript
+#: code:addons/eist_web_theme/static/src/webclient/systray_items/theme_menu/theme_panel.xml:0
+#: code:addons/rhino-data-pipe/eist_web_theme/static/src/webclient/systray_items/theme_menu/theme_panel.xml:0
+msgid "Display the footer support"
+msgstr "显示页脚技术支持"
 
 #. module: eist_web_theme
 #: model_terms:ir.ui.view,arch_db:eist_web_theme.res_config_settings_view_form
@@ -421,6 +529,13 @@ msgid ""
 msgstr "在浏览器窗口的标题栏或状态栏上的标题栏中显示公司名称。"
 
 #. module: eist_web_theme
+#. odoo-javascript
+#: code:addons/eist_web_theme/static/src/webclient/footer/footer.xml:0
+#: code:addons/rhino-data-pipe/eist_web_theme/static/src/webclient/footer/footer.xml:0
+msgid "Document"
+msgstr "文档"
+
+#. module: eist_web_theme
 #: model:ir.model.fields,field_description:eist_web_theme.field_res_company__doc_url
 #: model:ir.model.fields,field_description:eist_web_theme.field_res_config_settings__doc_url
 #: model:ir.model.fields,field_description:eist_web_theme.field_res_theme__doc_url
@@ -440,6 +555,7 @@ msgstr "抽屉菜单配置"
 #. module: eist_web_theme
 #. odoo-javascript
 #: code:addons/eist_web_theme/static/src/webclient/navbar/navbar.js:0
+#: code:addons/rhino-data-pipe/eist_web_theme/static/src/webclient/navbar/navbar.js:0
 msgid "Drawer menu"
 msgstr "抽屉菜单"
 
@@ -479,6 +595,13 @@ msgid "Enable lock screen"
 msgstr "启用锁屏"
 
 #. module: eist_web_theme
+#. odoo-javascript
+#: code:addons/eist_web_theme/static/src/webclient/settings_form_view/widgets/eist_config_navigation/eist_config_navigation.xml:0
+#: code:addons/rhino-data-pipe/eist_web_theme/static/src/webclient/settings_form_view/widgets/eist_config_navigation/eist_config_navigation.xml:0
+msgid "Extended functionality"
+msgstr "扩展功能"
+
+#. module: eist_web_theme
 #: model_terms:ir.ui.view,arch_db:eist_web_theme.res_config_settings_view_form
 msgid "Favorites Icon"
 msgstr "收藏夹图标"
@@ -491,18 +614,21 @@ msgstr "收藏菜单"
 #. module: eist_web_theme
 #. odoo-javascript
 #: code:addons/eist_web_theme/static/src/webclient/systray_items/theme_menu/theme_panel.xml:0
+#: code:addons/rhino-data-pipe/eist_web_theme/static/src/webclient/systray_items/theme_menu/theme_panel.xml:0
 msgid "Footer"
 msgstr "页脚"
 
 #. module: eist_web_theme
 #. odoo-javascript
 #: code:addons/eist_web_theme/static/src/webclient/systray_items/theme_menu/theme_panel.xml:0
+#: code:addons/rhino-data-pipe/eist_web_theme/static/src/webclient/systray_items/theme_menu/theme_panel.xml:0
 msgid "Form"
 msgstr "表单"
 
 #. module: eist_web_theme
 #. odoo-javascript
 #: code:addons/eist_web_theme/static/src/webclient/systray_items/theme_menu/theme_panel.xml:0
+#: code:addons/rhino-data-pipe/eist_web_theme/static/src/webclient/systray_items/theme_menu/theme_panel.xml:0
 #: model:ir.model.fields,field_description:eist_web_theme.field_res_company__form_chatter_position
 #: model:ir.model.fields,field_description:eist_web_theme.field_res_config_settings__form_chatter_position
 #: model:ir.model.fields,field_description:eist_web_theme.field_res_theme__form_chatter_position
@@ -519,6 +645,8 @@ msgstr "完整的系统名称"
 #. odoo-python
 #: code:addons/eist_web_theme/models/ir_http.py:0
 #: code:addons/eist_web_theme/static/src/core/theme_colorlist/theme_colorlist.js:0
+#: code:addons/rhino-data-pipe/eist_web_theme/models/ir_http.py:0
+#: code:addons/rhino-data-pipe/eist_web_theme/static/src/core/theme_colorlist/theme_colorlist.js:0
 msgid "Green"
 msgstr "绿色"
 
@@ -527,8 +655,10 @@ msgstr "绿色"
 #. odoo-python
 #: code:addons/eist_web_theme/models/ir_http.py:0
 #: code:addons/eist_web_theme/static/src/core/theme_colorlist/theme_colorlist.js:0
+#: code:addons/rhino-data-pipe/eist_web_theme/models/ir_http.py:0
+#: code:addons/rhino-data-pipe/eist_web_theme/static/src/core/theme_colorlist/theme_colorlist.js:0
 msgid "Grey"
-msgstr "Grey"
+msgstr "灰色"
 
 #. module: eist_web_theme
 #: model:ir.model,name:eist_web_theme.model_ir_http
@@ -538,6 +668,7 @@ msgstr "HTTP 路由"
 #. module: eist_web_theme
 #. odoo-javascript
 #: code:addons/eist_web_theme/static/src/webclient/systray_items/theme_menu/theme_panel.xml:0
+#: code:addons/rhino-data-pipe/eist_web_theme/static/src/webclient/systray_items/theme_menu/theme_panel.xml:0
 msgid "Header"
 msgstr "页头"
 
@@ -554,12 +685,14 @@ msgstr "页头导航栏和侧边栏"
 #. module: eist_web_theme
 #. odoo-javascript
 #: code:addons/eist_web_theme/static/src/webclient/drawer_menu/drawer_menu_service.js:0
+#: code:addons/rhino-data-pipe/eist_web_theme/static/src/webclient/drawer_menu/drawer_menu_service.js:0
 msgid "Home"
 msgstr "首页"
 
 #. module: eist_web_theme
 #. odoo-javascript
 #: code:addons/eist_web_theme/static/src/webclient/systray_items/theme_menu/theme_panel.xml:0
+#: code:addons/rhino-data-pipe/eist_web_theme/static/src/webclient/systray_items/theme_menu/theme_panel.xml:0
 #: model:ir.model.fields,field_description:eist_web_theme.field_res_company__sidebar_hover_maximize
 #: model:ir.model.fields,field_description:eist_web_theme.field_res_config_settings__sidebar_hover_maximize
 #: model:ir.model.fields,field_description:eist_web_theme.field_res_theme__sidebar_hover_maximize
@@ -584,18 +717,22 @@ msgstr "如果选中，则用户将无法设置主题，只能使用全局主题
 #. odoo-python
 #: code:addons/eist_web_theme/models/ir_http.py:0
 #: code:addons/eist_web_theme/static/src/core/theme_colorlist/theme_colorlist.js:0
+#: code:addons/rhino-data-pipe/eist_web_theme/models/ir_http.py:0
+#: code:addons/rhino-data-pipe/eist_web_theme/static/src/core/theme_colorlist/theme_colorlist.js:0
 msgid "Indigo"
 msgstr "靛蓝"
 
 #. module: eist_web_theme
 #. odoo-javascript
-#: code:addons/eist_web_theme/static/src/webclient/settings_form_view/widgets/navigation.xml:0
+#: code:addons/eist_web_theme/static/src/webclient/settings_form_view/widgets/eist_config_navigation/eist_config_navigation.xml:0
+#: code:addons/rhino-data-pipe/eist_web_theme/static/src/webclient/settings_form_view/widgets/eist_config_navigation/eist_config_navigation.xml:0
 msgid "Industry Solution"
 msgstr "行业解决方案"
 
 #. module: eist_web_theme
 #. odoo-javascript
 #: code:addons/eist_web_theme/static/src/webclient/systray_items/user_menu/user_menu.js:0
+#: code:addons/rhino-data-pipe/eist_web_theme/static/src/webclient/systray_items/user_menu/user_menu.js:0
 msgid "Install App"
 msgstr "安装应用程序"
 
@@ -616,6 +753,8 @@ msgstr "最后更新时间"
 #. odoo-python
 #: code:addons/eist_web_theme/models/ir_http.py:0
 #: code:addons/eist_web_theme/static/src/core/theme_colorlist/theme_colorlist.js:0
+#: code:addons/rhino-data-pipe/eist_web_theme/models/ir_http.py:0
+#: code:addons/rhino-data-pipe/eist_web_theme/static/src/core/theme_colorlist/theme_colorlist.js:0
 msgid "Lavender"
 msgstr "淡紫色"
 
@@ -624,18 +763,22 @@ msgstr "淡紫色"
 #. odoo-python
 #: code:addons/eist_web_theme/models/ir_http.py:0
 #: code:addons/eist_web_theme/static/src/core/theme_colorlist/theme_colorlist.js:0
+#: code:addons/rhino-data-pipe/eist_web_theme/models/ir_http.py:0
+#: code:addons/rhino-data-pipe/eist_web_theme/static/src/core/theme_colorlist/theme_colorlist.js:0
 msgid "Light"
 msgstr "浅色"
 
 #. module: eist_web_theme
 #. odoo-javascript
 #: code:addons/eist_web_theme/static/src/webclient/systray_items/theme_menu/theme_panel.xml:0
+#: code:addons/rhino-data-pipe/eist_web_theme/static/src/webclient/systray_items/theme_menu/theme_panel.xml:0
 msgid "List"
 msgstr "列表"
 
 #. module: eist_web_theme
 #. odoo-javascript
 #: code:addons/eist_web_theme/static/src/webclient/systray_items/user_menu/user_menu_items.js:0
+#: code:addons/rhino-data-pipe/eist_web_theme/static/src/webclient/systray_items/user_menu/user_menu_items.js:0
 #: model:ir.model.fields,field_description:eist_web_theme.field_res_users__lock_screen
 msgid "Lock Screen"
 msgstr "锁屏"
@@ -683,20 +826,38 @@ msgstr "登录页面技术支持文本"
 #. module: eist_web_theme
 #. odoo-javascript
 #: code:addons/eist_web_theme/static/src/webclient/sidebar_menu/sidebar_menu.xml:0
+#: code:addons/rhino-data-pipe/eist_web_theme/static/src/webclient/sidebar_menu/sidebar_menu.xml:0
 msgid "Logo"
 msgstr "徽标"
 
 #. module: eist_web_theme
 #. odoo-javascript
 #: code:addons/eist_web_theme/static/src/webclient/systray_items/theme_menu/theme_panel.xml:0
+#: code:addons/rhino-data-pipe/eist_web_theme/static/src/webclient/systray_items/theme_menu/theme_panel.xml:0
 msgid "Main"
 msgstr "主要"
+
+#. module: eist_web_theme
+#: model:ir.model.fields,field_description:eist_web_theme.field_res_company__sidebar_main_menu_display_arrow
+#: model:ir.model.fields,field_description:eist_web_theme.field_res_config_settings__sidebar_main_menu_display_arrow
+#: model:ir.model.fields,field_description:eist_web_theme.field_res_theme__sidebar_main_menu_display_arrow
+msgid "Main menu display arrow"
+msgstr "主菜单显示箭头"
+
+#. module: eist_web_theme
+#: model:ir.model.fields,field_description:eist_web_theme.field_res_company__sidebar_main_menu_display_icon
+#: model:ir.model.fields,field_description:eist_web_theme.field_res_config_settings__sidebar_main_menu_display_icon
+#: model:ir.model.fields,field_description:eist_web_theme.field_res_theme__sidebar_main_menu_display_icon
+msgid "Main menu display icon"
+msgstr "主菜单显示图标"
 
 #. module: eist_web_theme
 #. odoo-javascript
 #. odoo-python
 #: code:addons/eist_web_theme/models/ir_http.py:0
 #: code:addons/eist_web_theme/static/src/core/theme_colorlist/theme_colorlist.js:0
+#: code:addons/rhino-data-pipe/eist_web_theme/models/ir_http.py:0
+#: code:addons/rhino-data-pipe/eist_web_theme/static/src/core/theme_colorlist/theme_colorlist.js:0
 msgid "Mauve"
 msgstr "淡紫红色"
 
@@ -713,12 +874,14 @@ msgstr "名称"
 #. module: eist_web_theme
 #. odoo-javascript
 #: code:addons/eist_web_theme/static/src/webclient/drawer_menu/drawer_menu.xml:0
+#: code:addons/rhino-data-pipe/eist_web_theme/static/src/webclient/drawer_menu/drawer_menu.xml:0
 msgid "No result"
 msgstr "没有结果"
 
 #. module: eist_web_theme
 #. odoo-javascript
 #: code:addons/eist_web_theme/static/src/webclient/systray_items/theme_menu/theme_panel.xml:0
+#: code:addons/rhino-data-pipe/eist_web_theme/static/src/webclient/systray_items/theme_menu/theme_panel.xml:0
 #: model:ir.model.fields,field_description:eist_web_theme.field_res_company__list_rows_limit
 #: model:ir.model.fields,field_description:eist_web_theme.field_res_config_settings__list_rows_limit
 #: model:ir.model.fields,field_description:eist_web_theme.field_res_theme__list_rows_limit
@@ -728,18 +891,21 @@ msgstr "列表中的行数"
 #. module: eist_web_theme
 #. odoo-javascript
 #: code:addons/eist_web_theme/static/src/webclient/settings_form_view/res_config_edition.xml:0
+#: code:addons/rhino-data-pipe/eist_web_theme/static/src/webclient/settings_form_view/res_config_edition.xml:0
 msgid "Odoo"
 msgstr ""
 
 #. module: eist_web_theme
 #. odoo-javascript
 #: code:addons/eist_web_theme/static/src/webclient/systray_items/user_menu/user_menu.js:0
+#: code:addons/rhino-data-pipe/eist_web_theme/static/src/webclient/systray_items/user_menu/user_menu.js:0
 msgid "Onboarding"
 msgstr "新手入门"
 
 #. module: eist_web_theme
 #. odoo-javascript
 #: code:addons/eist_web_theme/static/src/webclient/systray_items/theme_menu/theme_panel.xml:0
+#: code:addons/rhino-data-pipe/eist_web_theme/static/src/webclient/systray_items/theme_menu/theme_panel.xml:0
 #: model:ir.model.fields,field_description:eist_web_theme.field_res_company__main_open_action_in_tabs
 #: model:ir.model.fields,field_description:eist_web_theme.field_res_config_settings__main_open_action_in_tabs
 #: model:ir.model.fields,field_description:eist_web_theme.field_res_theme__main_open_action_in_tabs
@@ -751,6 +917,8 @@ msgstr "在标签页中打开动作"
 #. odoo-python
 #: code:addons/eist_web_theme/models/ir_http.py:0
 #: code:addons/eist_web_theme/static/src/core/theme_colorlist/theme_colorlist.js:0
+#: code:addons/rhino-data-pipe/eist_web_theme/models/ir_http.py:0
+#: code:addons/rhino-data-pipe/eist_web_theme/static/src/core/theme_colorlist/theme_colorlist.js:0
 msgid "Orange"
 msgstr "橙色"
 
@@ -767,12 +935,14 @@ msgstr "由<span>Odoo</span>提供支持"
 #. module: eist_web_theme
 #. odoo-javascript
 #: code:addons/eist_web_theme/static/src/webclient/navbar/navbar.js:0
+#: code:addons/rhino-data-pipe/eist_web_theme/static/src/webclient/navbar/navbar.js:0
 msgid "Previous view"
 msgstr "以前的视图"
 
 #. module: eist_web_theme
 #. odoo-javascript
 #: code:addons/eist_web_theme/static/src/webclient/systray_items/theme_menu/theme_panel.xml:0
+#: code:addons/rhino-data-pipe/eist_web_theme/static/src/webclient/systray_items/theme_menu/theme_panel.xml:0
 msgid "Primary Color"
 msgstr "主要颜色"
 
@@ -781,6 +951,8 @@ msgstr "主要颜色"
 #. odoo-python
 #: code:addons/eist_web_theme/models/ir_http.py:0
 #: code:addons/eist_web_theme/static/src/core/theme_colorlist/theme_colorlist.js:0
+#: code:addons/rhino-data-pipe/eist_web_theme/models/ir_http.py:0
+#: code:addons/rhino-data-pipe/eist_web_theme/static/src/core/theme_colorlist/theme_colorlist.js:0
 msgid "Red"
 msgstr "红色"
 
@@ -792,6 +964,7 @@ msgstr "表单的右侧"
 #. module: eist_web_theme
 #. odoo-javascript
 #: code:addons/eist_web_theme/static/src/webclient/systray_items/theme_menu/theme_panel.xml:0
+#: code:addons/rhino-data-pipe/eist_web_theme/static/src/webclient/systray_items/theme_menu/theme_panel.xml:0
 msgid "Save"
 msgstr "保存"
 
@@ -803,24 +976,56 @@ msgstr "此页面上的设置将应用于此公司。"
 #. module: eist_web_theme
 #. odoo-javascript
 #: code:addons/eist_web_theme/static/src/webclient/share_url/share_url.js:0
+#: code:addons/rhino-data-pipe/eist_web_theme/static/src/webclient/share_url/share_url.js:0
 msgid "Share"
 msgstr "分享"
 
 #. module: eist_web_theme
 #. odoo-javascript
 #: code:addons/eist_web_theme/static/src/webclient/share_url/burger_menu.xml:0
+#: code:addons/rhino-data-pipe/eist_web_theme/static/src/webclient/share_url/burger_menu.xml:0
 msgid "Share URL"
 msgstr "分享URL"
 
 #. module: eist_web_theme
 #. odoo-javascript
 #: code:addons/eist_web_theme/static/src/webclient/systray_items/user_menu/user_menu.js:0
+#: code:addons/rhino-data-pipe/eist_web_theme/static/src/webclient/systray_items/user_menu/user_menu.js:0
 msgid "Shortcuts: "
 msgstr "快捷键："
 
 #. module: eist_web_theme
+#: model:ir.model.fields,help:eist_web_theme.field_res_company__display_footer_doc
+#: model:ir.model.fields,help:eist_web_theme.field_res_config_settings__display_footer_doc
+#: model:ir.model.fields,help:eist_web_theme.field_res_theme__display_footer_doc
+msgid "Show Documentation in footer"
+msgstr "在页脚中显示文档"
+
+#. module: eist_web_theme
+#: model:ir.model.fields,help:eist_web_theme.field_res_company__display_footer_version
+#: model:ir.model.fields,help:eist_web_theme.field_res_config_settings__display_footer_version
+#: model:ir.model.fields,help:eist_web_theme.field_res_theme__display_footer_version
+msgid "Show Version in footer"
+msgstr "在页脚中显示版本"
+
+#. module: eist_web_theme
+#: model:ir.model.fields,help:eist_web_theme.field_res_company__display_footer_copyright
+#: model:ir.model.fields,help:eist_web_theme.field_res_config_settings__display_footer_copyright
+#: model:ir.model.fields,help:eist_web_theme.field_res_theme__display_footer_copyright
+msgid "Show copyright in footer"
+msgstr "在页脚中显示版权"
+
+#. module: eist_web_theme
+#: model:ir.model.fields,help:eist_web_theme.field_res_company__display_footer
+#: model:ir.model.fields,help:eist_web_theme.field_res_config_settings__display_footer
+#: model:ir.model.fields,help:eist_web_theme.field_res_theme__display_footer
+msgid "Show footers only in desktop mode"
+msgstr "仅在桌面模式下显示页脚"
+
+#. module: eist_web_theme
 #. odoo-javascript
 #: code:addons/eist_web_theme/static/src/webclient/systray_items/theme_menu/theme_panel.xml:0
+#: code:addons/rhino-data-pipe/eist_web_theme/static/src/webclient/systray_items/theme_menu/theme_panel.xml:0
 #: model:ir.model.fields,field_description:eist_web_theme.field_res_company__sidebar_show_minimize_button
 #: model:ir.model.fields,field_description:eist_web_theme.field_res_config_settings__sidebar_show_minimize_button
 #: model:ir.model.fields,field_description:eist_web_theme.field_res_theme__sidebar_show_minimize_button
@@ -830,15 +1035,31 @@ msgstr "显示最小化按钮"
 #. module: eist_web_theme
 #. odoo-javascript
 #: code:addons/eist_web_theme/static/src/webclient/systray_items/theme_menu/theme_panel.xml:0
+#: code:addons/rhino-data-pipe/eist_web_theme/static/src/webclient/systray_items/theme_menu/theme_panel.xml:0
 msgid "Show scroll to top button"
 msgstr "显示滚动到顶部按钮"
 
 #. module: eist_web_theme
+#: model:ir.model.fields,help:eist_web_theme.field_res_company__display_footer_support
+#: model:ir.model.fields,help:eist_web_theme.field_res_config_settings__display_footer_support
+#: model:ir.model.fields,help:eist_web_theme.field_res_theme__display_footer_support
+msgid "Show support link in footer"
+msgstr "在页脚中显示技术支持链接"
+
+#. module: eist_web_theme
 #. odoo-javascript
 #: code:addons/eist_web_theme/static/src/webclient/systray_items/theme_menu/theme_panel.xml:0
+#: code:addons/rhino-data-pipe/eist_web_theme/static/src/webclient/systray_items/theme_menu/theme_panel.xml:0
 #: model:ir.model.fields.selection,name:eist_web_theme.selection__res_theme__main_submenu_position__2
 msgid "Sidebar"
 msgstr "侧边栏"
+
+#. module: eist_web_theme
+#. odoo-javascript
+#: code:addons/eist_web_theme/static/src/webclient/systray_items/theme_menu/theme_panel.xml:0
+#: code:addons/rhino-data-pipe/eist_web_theme/static/src/webclient/systray_items/theme_menu/theme_panel.xml:0
+msgid "Sidebar Main Menu"
+msgstr "侧边栏主菜单"
 
 #. module: eist_web_theme
 #: model:ir.model.fields.selection,name:eist_web_theme.selection__res_theme__main_app_load_method__1
@@ -847,7 +1068,15 @@ msgstr "侧边栏菜单"
 
 #. module: eist_web_theme
 #. odoo-javascript
-#: code:addons/eist_web_theme/static/src/webclient/settings_form_view/widgets/navigation.xml:0
+#: code:addons/eist_web_theme/static/src/webclient/systray_items/theme_menu/theme_panel.xml:0
+#: code:addons/rhino-data-pipe/eist_web_theme/static/src/webclient/systray_items/theme_menu/theme_panel.xml:0
+msgid "Sidebar Submenu"
+msgstr "侧边栏子菜单"
+
+#. module: eist_web_theme
+#. odoo-javascript
+#: code:addons/eist_web_theme/static/src/webclient/settings_form_view/widgets/eist_config_navigation/eist_config_navigation.xml:0
+#: code:addons/rhino-data-pipe/eist_web_theme/static/src/webclient/settings_form_view/widgets/eist_config_navigation/eist_config_navigation.xml:0
 msgid "Signup And Login"
 msgstr "注册和登录"
 
@@ -863,7 +1092,8 @@ msgstr "注册页面 电子邮件 必填"
 
 #. module: eist_web_theme
 #. odoo-javascript
-#: code:addons/eist_web_theme/static/src/webclient/settings_form_view/widgets/navigation.xml:0
+#: code:addons/eist_web_theme/static/src/webclient/settings_form_view/widgets/eist_config_navigation/eist_config_navigation.xml:0
+#: code:addons/rhino-data-pipe/eist_web_theme/static/src/webclient/settings_form_view/widgets/eist_config_navigation/eist_config_navigation.xml:0
 msgid "Solution"
 msgstr "解决方案"
 
@@ -875,11 +1105,26 @@ msgstr "方形Web徽标"
 #. module: eist_web_theme
 #. odoo-javascript
 #: code:addons/eist_web_theme/static/src/webclient/systray_items/theme_menu/theme_panel.xml:0
+#: code:addons/rhino-data-pipe/eist_web_theme/static/src/webclient/systray_items/theme_menu/theme_panel.xml:0
 #: model:ir.model.fields,field_description:eist_web_theme.field_res_company__main_submenu_position
 #: model:ir.model.fields,field_description:eist_web_theme.field_res_config_settings__main_submenu_position
 #: model:ir.model.fields,field_description:eist_web_theme.field_res_theme__main_submenu_position
 msgid "Submenu Position"
 msgstr "子菜单位置"
+
+#. module: eist_web_theme
+#: model:ir.model.fields,field_description:eist_web_theme.field_res_company__sidebar_submenu_display_arrow
+#: model:ir.model.fields,field_description:eist_web_theme.field_res_config_settings__sidebar_submenu_display_arrow
+#: model:ir.model.fields,field_description:eist_web_theme.field_res_theme__sidebar_submenu_display_arrow
+msgid "Submenu display arrow"
+msgstr "子菜单显示箭头"
+
+#. module: eist_web_theme
+#: model:ir.model.fields,field_description:eist_web_theme.field_res_company__sidebar_submenu_display_icon
+#: model:ir.model.fields,field_description:eist_web_theme.field_res_config_settings__sidebar_submenu_display_icon
+#: model:ir.model.fields,field_description:eist_web_theme.field_res_theme__sidebar_submenu_display_icon
+msgid "Submenu display icon"
+msgstr "子菜单显示图标"
 
 #. module: eist_web_theme
 #: model:ir.model.fields,field_description:eist_web_theme.field_res_company__support_url
@@ -896,8 +1141,16 @@ msgstr "系统名称"
 #. module: eist_web_theme
 #. odoo-javascript
 #: code:addons/eist_web_theme/static/src/webclient/drawer_menu/drawer_menu.xml:0
+#: code:addons/rhino-data-pipe/eist_web_theme/static/src/webclient/drawer_menu/drawer_menu.xml:0
 msgid "TIP"
 msgstr "提示"
+
+#. module: eist_web_theme
+#. odoo-javascript
+#: code:addons/eist_web_theme/static/src/webclient/footer/footer.xml:0
+#: code:addons/rhino-data-pipe/eist_web_theme/static/src/webclient/footer/footer.xml:0
+msgid "Technical support"
+msgstr "技术支持"
 
 #. module: eist_web_theme
 #: model_terms:ir.ui.view,arch_db:eist_web_theme.res_config_settings_view_form
@@ -941,7 +1194,8 @@ msgstr ""
 
 #. module: eist_web_theme
 #. odoo-javascript
-#: code:addons/eist_web_theme/static/src/webclient/settings_form_view/widgets/navigation.xml:0
+#: code:addons/eist_web_theme/static/src/webclient/settings_form_view/widgets/eist_config_navigation/eist_config_navigation.xml:0
+#: code:addons/rhino-data-pipe/eist_web_theme/static/src/webclient/settings_form_view/widgets/eist_config_navigation/eist_config_navigation.xml:0
 #: model:ir.model,name:eist_web_theme.model_res_theme
 #: model:ir.model.fields,field_description:eist_web_theme.field_res_company__theme_id
 #: model:ir.model.fields,field_description:eist_web_theme.field_res_users__theme_id
@@ -951,12 +1205,14 @@ msgstr "主题"
 #. module: eist_web_theme
 #. odoo-javascript
 #: code:addons/eist_web_theme/static/src/webclient/systray_items/theme_menu/theme_panel.xml:0
+#: code:addons/rhino-data-pipe/eist_web_theme/static/src/webclient/systray_items/theme_menu/theme_panel.xml:0
 msgid "Theme Color"
 msgstr "主题颜色"
 
 #. module: eist_web_theme
 #. odoo-javascript
 #: code:addons/eist_web_theme/static/src/webclient/systray_items/theme_menu/theme_panel.xml:0
+#: code:addons/rhino-data-pipe/eist_web_theme/static/src/webclient/systray_items/theme_menu/theme_panel.xml:0
 msgid "Theme Customize"
 msgstr "主题定制"
 
@@ -1018,7 +1274,15 @@ msgstr "用户名"
 
 #. module: eist_web_theme
 #. odoo-javascript
+#: code:addons/eist_web_theme/static/src/webclient/footer/footer.js:0
+#: code:addons/rhino-data-pipe/eist_web_theme/static/src/webclient/footer/footer.js:0
+msgid "Version:%s"
+msgstr "版本：%s"
+
+#. module: eist_web_theme
+#. odoo-javascript
 #: code:addons/eist_web_theme/static/src/webclient/systray_items/theme_menu/theme_panel.xml:0
+#: code:addons/rhino-data-pipe/eist_web_theme/static/src/webclient/systray_items/theme_menu/theme_panel.xml:0
 msgid "Views"
 msgstr "视图"
 
@@ -1067,36 +1331,43 @@ msgstr "选中后，徽标将显示在登录页面上。否则，不会显示它
 #. odoo-python
 #: code:addons/eist_web_theme/models/ir_http.py:0
 #: code:addons/eist_web_theme/static/src/core/theme_colorlist/theme_colorlist.js:0
+#: code:addons/rhino-data-pipe/eist_web_theme/models/ir_http.py:0
+#: code:addons/rhino-data-pipe/eist_web_theme/static/src/core/theme_colorlist/theme_colorlist.js:0
 msgid "Yellow"
 msgstr "黄色"
 
 #. module: eist_web_theme
 #. odoo-javascript
 #: code:addons/eist_web_theme/static/src/webclient/systray_items/theme_menu/theme_panel.xml:0
+#: code:addons/rhino-data-pipe/eist_web_theme/static/src/webclient/systray_items/theme_menu/theme_panel.xml:0
 msgid "You need to save the settings to make the new theme effective!"
 msgstr "您需要保存设置以使新主题生效！"
 
 #. module: eist_web_theme
 #. odoo-javascript
 #: code:addons/eist_web_theme/static/src/webclient/sidebar_menu/sidebar_menu.xml:0
+#: code:addons/rhino-data-pipe/eist_web_theme/static/src/webclient/sidebar_menu/sidebar_menu.xml:0
 msgid "{{ app.name}}"
 msgstr ""
 
 #. module: eist_web_theme
 #. odoo-javascript
 #: code:addons/eist_web_theme/static/src/webclient/sidebar_menu/sidebar_menu.xml:0
+#: code:addons/rhino-data-pipe/eist_web_theme/static/src/webclient/sidebar_menu/sidebar_menu.xml:0
 msgid "{{app.name}} has {{app.children.length}} submenus"
 msgstr "{{app.name}} 有 {{app.children.length}} 个子菜单"
 
 #. module: eist_web_theme
 #. odoo-javascript
 #: code:addons/eist_web_theme/static/src/webclient/sidebar_menu/sidebar_menu.xml:0
+#: code:addons/rhino-data-pipe/eist_web_theme/static/src/webclient/sidebar_menu/sidebar_menu.xml:0
 msgid "{{menu.name}} has {{menu.children.length}} submenus"
 msgstr "{{menu.name}} 有 {{menu.children.length}} 个子菜单"
 
 #. module: eist_web_theme
 #. odoo-javascript
 #: code:addons/eist_web_theme/static/src/webclient/sidebar_menu/sidebar_menu.xml:0
+#: code:addons/rhino-data-pipe/eist_web_theme/static/src/webclient/sidebar_menu/sidebar_menu.xml:0
 msgid ""
 "{{state.theme.sidebar.is_minimized  ? 'Expand the sidebar menu':'Collapse sidebar menu'}}"
 msgstr "{{state.theme.sidebar.is_minimized  ? '展开侧边栏菜单':'折叠侧边栏菜单'}}"
@@ -1104,5 +1375,6 @@ msgstr "{{state.theme.sidebar.is_minimized  ? '展开侧边栏菜单':'折叠侧
 #. module: eist_web_theme
 #. odoo-javascript
 #: code:addons/eist_web_theme/static/src/webclient/drawer_menu/drawer_menu.xml:0
+#: code:addons/rhino-data-pipe/eist_web_theme/static/src/webclient/drawer_menu/drawer_menu.xml:0
 msgid "— open me anywhere with"
 msgstr "— 在任何地方打开我的"

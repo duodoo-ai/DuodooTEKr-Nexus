@@ -112,7 +112,17 @@
                                         <strong>Save</strong> this page and come back here to set up the feature.
                                     </div>
                                 </div>
-                                
+
+                            </setting>
+
+                            <setting id="eist_multi_platform_setting" help="Provide multi platform client access functionality.">
+                                <field name="module_eist_multi_platform" />
+                                <div class="content-group" invisible="not module_eist_multi_platform" id="msg_eist_multi_platform">
+                                    <div class="mt16 text-warning">
+                                        <strong>Save</strong> this page and come back here to set up the feature.
+                                    </div>
+                                </div>
+
                             </setting>
 
                         </block>
