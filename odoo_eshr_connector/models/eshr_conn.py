@@ -1,6 +1,0 @@
-host="172.18.10.30"
-port="1433"
-user="zyfire"
-password="Zyfire@2024"
-database="K3SHRDB"
-charset="utf8"
