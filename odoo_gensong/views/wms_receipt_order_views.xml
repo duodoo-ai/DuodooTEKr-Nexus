@@ -29,7 +29,7 @@
                 <field name="ActualQty" optional="show"/>
                 <field name="DocumentStatus" optional="show"/>
                 <field name="CancelStatus" optional="hide"/>
-                <field name="Spec" optional="hide"/>
+                <field name="Spec" optional="show"/>
                 <field name="Area" optional="hide"/>
                 <field name="TaskId" optional="hide"/>
                 <field name="SyncState" optional="show"/>

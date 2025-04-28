@@ -18,10 +18,9 @@
     'category': '中国化应用/智能仓储集成方案',
     'version': '1.0',
 
-    'depends': ['base','mail','odoo_base'],
+    'depends': ['base','mail'],
 
     'data': [
-        'data/business_data.xml',
         'security/groups.xml',
         'security/ir.model.access.csv',
         'views/wms_material_info_views.xml',

@@ -14,7 +14,7 @@ _logger = logging.getLogger(__name__)
 # 首先构造一个SDK实例
 api_sdk = K3CloudApiSdk()
 # config_node:配置文件中的节点名称
-api_sdk.Init(config_path='rhino-data-nexus/sdk/conf.ini', config_node='config')
+api_sdk.Init(config_path='duodoo-tekr-nexus/sdk/conf.ini', config_node='config')
 # 此处仅构造保存接口的部分字段数据示例，使用时请参考WebAPI具体接口的实际参数列表
 current_time = time.strftime('%Y%m%d%H%M%S', time.localtime())
 
@@ -64,7 +64,7 @@ class WmsReceiptOrder(models.Model):
         unit_obj = self.env['wms.unit.info']
         para = {
             "FormId": "PRD_MO",
-            "FieldKeys": "FBILLNO, FTreeEntity_FSEQ, FTreeEntity_FEntryID, FFORMID, FMATERIALID, F_ZOYO_BaseProperty, F_ZOYO_BaseProperty9, FBASEUNITID, FQTY, FWORKSHOPID, FDATE, FDocumentStatus, FCancelStatus",
+            "FieldKeys": "FBILLNO, FTreeEntity_FSEQ, FTreeEntity_FEntryID, FFORMID, FMATERIALID, F_ZOYO_BaseProperty, F_ZOYO_BaseProperty9, FUNITID, FQTY, FWORKSHOPID, FDATE, FDocumentStatus, FCancelStatus",
             "FilterString": "'FBILLNO'=""",
             "OrderString": "FDATE DESC",
             "TopRowCount": 10,
@@ -87,7 +87,7 @@ class WmsReceiptOrder(models.Model):
                 # 写入采购入库单数据
                 material_record = material_obj.search([('MaterialId', '=', line['FMATERIALID'])])
                 warehouse_record = stock_obj.search([('StockId', '=', line['FWORKSHOPID'])])
-                unit_record = unit_obj.search([('UnitId', '=', line['FBASEUNITID'])])
+                unit_record = unit_obj.search([('UnitId', '=', line['FUNITID'])])
                 stock_in_record = stock_in_obj.search([('TMBillNo', '=', line['FBILLNO']),
                                                      ('FEntryID', '=', line['FTreeEntity.FEntryID'])])
                 pv = {
